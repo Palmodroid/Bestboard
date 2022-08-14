@@ -1,0 +1,46 @@
+COAT ( 1000 )
+
+ADDMODIFY (ID charsacc IGNORESPACE 
+   ROLLS (
+   "aáAÁ"
+   "bßB"
+   "c¢©C"
+   "dD"
+   "eé€EÉ"
+   "f£F"
+   "gG" 
+   "hH"
+   "iíIÍ"
+   "jJ"
+   "kK" 
+   "lL"
+   "mµM"
+   "nN"
+   "oóöőOÓÖŐ"
+   "p§P¶"
+   "qQ"
+   "r®R"
+   "s$S"
+   "tT"
+   "uúüűUÚÜŰ"
+   "v¤V"
+   "wW"
+   "xX"
+   "y¥Y"
+   "zZ"
+   "({[<«"
+   ")}]>»"
+   "\"„”"
+   "\'’"
+   ".?!…"
+   ",;:"
+   "-–"
+   "/÷"
+   "+±†‡"
+   "%‰"
+   "*×"
+   "0°"
+   " ‑" ; non-breaking space and non breaking hyphen.
+   "#`~^") ) ; Special symbols, rarely needed
+
+   

@@ -1,0 +1,6 @@
+    public static final long TOKEN_HEXU = 0xe736dL;<br>
+    public static final long TOKEN_HEXRU = 0x1f2ae94L;<br>
+    public static final long TOKEN_HEXRD = 0x1f2ae83L;<br>
+    public static final long TOKEN_HEXD = 0xe735cL;<br>
+    public static final long TOKEN_HEXLD = 0x1f2ada5L;<br>
+    public static final long TOKEN_HEXLU = 0x1f2adb6L;<br>

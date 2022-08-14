@@ -1,0 +1,14 @@
+COAT ( 1000 )
+
+LET ( num09 BLOCK (
+	BUTTON ( TEXT "0" )
+	BUTTON ( TEXT "1" )
+	BUTTON ( TEXT "2" )
+	BUTTON ( TEXT "3" )
+	BUTTON ( TEXT "4" )
+	BUTTON ( TEXT "5" )
+	BUTTON ( TEXT "6" )
+	BUTTON ( TEXT "7" )
+	BUTTON ( TEXT "8" )
+	BUTTON ( TEXT "9" )
+	) )

@@ -1,0 +1,19 @@
+COAT ( 1000 )
+
+INCLUDE ( "qwertycolors.ext" )
+
+; Layouts
+DEFAULT (ADDLAYOUT ( ALIGN odds ROWS 5 HALFCOLUMNS 29 ASBOARD ))
+
+INCLUDE ( "qwertybase.layout" )
+
+INCLUDE ( "qwertyspec.layout" )
+
+; SWITCH button for both layouts
+DEFAULT ( BLOCK ( ROW -3 COLUMN 1))
+DEFAULT ( SWITCH ( BOARD qwertyspec ADDTITLE ( TEXT "á!#") COLOR 0norchid )) 
+BLOCK ( LAYOUT qwertybase SWITCH ( ))
+BLOCK ( LAYOUT qwertyspec SWITCH ( LOCK )) 
+
+; Modify 
+INCLUDE ( "modify.ext" )

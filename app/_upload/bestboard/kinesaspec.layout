@@ -1,0 +1,88 @@
+﻿COAT ( 1000 )
+
+ADDLAYOUT ( ID kinesaspec )
+
+; Arrows !! SAME
+
+DEFAULT ( BUTTON ( REPEAT COLOR gray ))
+DEFAULT ( ADDTITLE ( XOFFSET -750 SIZE 1800 COLOR black ))
+BLOCK ( ROW 2 COLUMN 8
+	BUTTON ( RIGHT ADDTITLE ( TEXT '▶' )) 
+DL DR
+	BUTTON ( LEFT ADDTITLE ( TEXT '◀' ))
+    	)
+    	
+; Meta and links (links' colors are changed) !! SAME - but CAPS, CASE are missing
+	
+DEFAULT ( BUTTON ( COLOR white  ))
+DEFAULT ( ADDTITLE ( SIZE 800 BOLD COLOR magenta ))
+
+BLOCK ( ROW 2 COLUMN 1 
+;	BUTTON ( CHANGECASE ( LOWER UPPER SENTENCE ) ADDTITLE ( TEXT "CASE" ))
+DL
+	BUTTON ( TEXT '\t' ADDTITLE ( TEXT "⇥" XOFFSET 750 ) whitespace )
+DR    
+;	META ( CAPS COLOR white )
+	)
+
+BLOCK ( ROW 1 COLUMN 7
+	BUTTON ( BACKSPACE REPEAT )
+	MEMORY ( ADDTITLE ( SIZE 600 COLOR black) COLOR gray )
+DL	
+	ENTER ( endpara COLOR white )
+DR DL DR	
+	MODIFY ( ROLL charsacc ADDTITLE ( TEXT "o↺ő" ) COLOR white )
+	)
+    	
+
+
+INCLUDE ("numcube.ext")
+
+BLOCK ( ROW 1 COLUMN 4
+	numcube
+	)
+	
+
+	
+DEFAULT ( BUTTON ( COLOR green ))
+DEFAULT ( ALTERNATE ( COLOR orange))
+DEFAULT ( ADDTITLE () )
+
+LET ( cal BUTTON ( COLOR yellow ADDTITLE ( BOLD COLOR red)))
+
+BLOCK ( ROW 2 COLUMN 6
+	BUTTON ( TEXT ( "=" ) )
+CRL
+	BUTTON ( TEXT ( "+" ) cal )
+	BUTTON ( TEXT ( "-" ) cal )
+	BUTTON ( TEXT ( "#" ) )
+CRL
+	BUTTON ( TEXT ( "*" ) cal )
+	BUTTON ( TEXT ( "/" ) cal )
+	BUTTON ( TEXT ( "%" ) )
+	)
+	
+BLOCK ( ROW 1 COLUMN 1
+R R
+	ALTERNATE (TEXT "(" SECOND ( TEXT ")" ))
+CRR
+	ALTERNATE ( TEXT "„" SECOND ( TEXT  "”" ))
+	ALTERNATE ( TEXT "[" SECOND ( TEXT  "]" ))
+CRL R
+	ALTERNATE ( TEXT "<" SECOND ( TEXT  ">" ))
+CRR
+	BUTTON ( TEXT ( "…" ) )
+	BUTTON ( TEXT ( " " ) cal )
+	BUTTON ( TEXT ( "." ) cal )
+CRL R
+	BUTTON ( TEXT ( "\'" ) )
+	BUTTON ( TEXT ( "\"" ) )
+	BUTTON ( TEXT ( "@" ) COLOR blue )
+	BUTTON ( TEXT ( "_" )  COLOR blue)
+	BUTTON ( TEXT ( "\\" )  COLOR blue)
+	BUTTON ( TEXT ( "&" ) )
+	)
+	
+; "(){}[]<=>*/%+@\_'|#&…„”`~$^§x°€÷×«»ß¤	
+;              \| &           	
+	

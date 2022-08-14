@@ -1,0 +1,319 @@
+COAT ( 1000 )
+
+NAME "Test" 
+VERSION 1
+AUTHOR "Thon"
+ADDTAGS ( "keyboard" "hexagonal" "test" ) 
+DESCRIPTION "Soft-keyboard for testing" 
+
+LET ( black 0nblack ); K ) ; 0c0 )
+LET ( white 0nsnow ); W ) ; 0cffe )
+LET ( gray 0ngray ); LG ) ; 0c8 )
+LET ( silver 0nsilver ); PG ) ;0ca )
+
+LET ( yellow 0nlightgoldenrodyellow ); PDY ) ; 0cee4 )
+LET ( green 0npalegreen ); PDG ) ; 0c8e8 )
+LET ( blue 0nskyblue ); PDB ) ; 0c99e )
+LET ( rose 0npink ); PDP ) ; 0ce6b2ab )
+LET ( brown 0nburlywood ); LDO ) ; 0ccb2 )
+LET ( purple 0nplum ); )LDM ) ; 0cc673d9 )
+LET ( fuchsia 0nmistyrose ) ; )PWM ) ;  0cfcf )
+LET ( orange 0nlightsalmon ); )LOR ) ; 0cf84 )
+
+LET ( khaki 0nbisque ); LWY ) ; 0cd4ddaa )
+LET ( magenta 0ndarkmagenta ) ;DDV ) ; 0c800080 )
+LET ( red 0nfirebrick ) ; MFR ) ; 0ca00 )
+
+LET ( pink 0npink ); PDR ) ; 0ce99 )
+
+
+LET ( ENTERTEXT '✓' )
+
+SHOWTITLES (
+	ENTERTEXT ENTERTEXT
+	GOTEXT ENTERTEXT
+	SEARCHTEXT ENTERTEXT
+	SENDTEXT ENTERTEXT
+	NEXTTEXT ENTERTEXT
+	DONETEXT ENTERTEXT
+	PREVTEXT ENTERTEXT
+	NONETEXT ENTERTEXT
+	UNKNOWNTEXT ENTERTEXT
+	AUTOFUNCON "";"Auto"
+	AUTOFUNCOFF "Off" )
+
+DEFAULT ( ADDTITLE ( SIZE 1000 ) )
+LET ( script ADDTITLE ( YOFFSET 0 SIZE 800 BOLD COLOR magenta) )
+LET ( link ADDTITLE ( YOFFSET 0 SIZE 800 BOLD COLOR white) )
+LET ( north ADDTITLE ( YOFFSET -400 SIZE  800 COLOR red ) )
+LET ( south ADDTITLE ( YOFFSET +300 SIZE 1000 ) )
+
+; central part of kinesa
+; #############################################
+
+DEFAULT ( BUTTON ( TWIN ))
+LET ( kinesacentr BLOCK (
+    BUTTON ( TEXT 'v' COLOR blue )
+    BUTTON ( TEXT 'c' COLOR green ) 
+    BUTTON ( TEXT 'z' COLOR green ) 
+    BUTTON ( TEXT 'm' COLOR green ) 
+ CRL    BUTTON ( TEXT 'b' COLOR blue ) 
+    BUTTON ( TEXT 'l' COLOR green ) 
+    BUTTON ( TEXT 's' COLOR yellow ) 
+    BUTTON ( TEXT 'e' COLOR yellow ) 
+    BUTTON ( TEXT 't' COLOR green ) 
+ CRL    BUTTON ( TEXT 'f' COLOR blue )
+    BUTTON ( TEXT 'r' COLOR green ) 
+    BUTTON ( TEXT 'a' COLOR yellow ) 
+    SPACETRAVEL ( SECOND ( TOGGLE AUTOFUNC ) ERASESPACE around AUTOCAPS hold COLOR fuchsia
+		ADDTITLE ( SHOW AUTOFUNC SIZE 600 YOFFSET -300 ITALICS COLOR red) ) 
+    BUTTON ( TEXT 'n' COLOR yellow ) 
+    BUTTON ( TEXT 'y' COLOR green ) 
+ CRR    BUTTON ( TEXT 'j' COLOR blue ) 
+    BUTTON ( TEXT 'o' COLOR green ) 
+    BUTTON ( TEXT 'k' COLOR yellow ) 
+    BUTTON ( TEXT 'i' COLOR yellow ) 
+    BUTTON ( TEXT 'g' COLOR green )
+ CRR    BUTTON ( TEXT 'h' COLOR blue ) 
+    BUTTON ( TEXT 'p' COLOR green ) 
+    BUTTON ( TEXT 'u' COLOR green ) 
+    BUTTON ( TEXT 'd' COLOR green ) 
+    ) )
+
+; accented part of kinesa
+; #############################################
+
+LET ( kinesaaccent BLOCK (
+    BUTTON ( TEXT 'í' COLOR rose )
+ DL
+ DL    BUTTON ( TEXT 'ú' COLOR purple  )
+ DR    BUTTON ( TEXT 'ü' COLOR purple  )
+ DR    BUTTON ( TEXT 'ű' COLOR purple  )
+ HOME
+ SKIP 5
+    BUTTON ( TEXT 'á' COLOR rose )
+ DR    BUTTON ( TEXT 'é' COLOR rose )
+ DR    BUTTON ( TEXT 'ó' COLOR purple  )
+ DL    BUTTON ( TEXT 'ö' COLOR purple  )
+ DL    BUTTON ( TEXT 'ő' COLOR purple  )
+    ) )
+
+; accented part of kinesa special
+; #############################################
+
+LET ( kinesaacc2 BLOCK (
+    BUTTON ( TEXT 'í' COLOR rose )
+ SKIP 4
+    BUTTON ( TEXT 'á' COLOR rose )
+ DR    BUTTON ( TEXT 'é' COLOR rose )
+ DR    BUTTON ( TEXT 'ó' COLOR purple  )
+     BUTTON ( TEXT 'ú' COLOR rose  )
+ DL L    BUTTON ( TEXT 'ö' COLOR purple  )
+     BUTTON ( TEXT 'ü' COLOR rose  )
+ DL L    BUTTON ( TEXT 'ő' COLOR purple  )
+     BUTTON ( TEXT 'ű' COLOR rose  )
+    ) )
+
+; rare part of kinesa
+; #############################################
+
+LET ( kinesarare BLOCK (
+    SINGLE ( TEXT 'q' COLOR brown TWIN ONSTAY)
+ DL    SINGLE ( TEXT 'w' COLOR brown CAPITAL ONSTAY)
+    SINGLE ( TEXT 'x' COLOR brown REPEAT ONCIRCLE)
+    ) )
+
+; reverse rare part of kinesa
+; #############################################
+
+LET ( kinesarever BLOCK (
+    BUTTON ( TEXT 'q' COLOR brown )
+    BUTTON ( TEXT 'x' COLOR brown )
+ DL    BUTTON ( TEXT 'w' COLOR brown )
+    ) )
+
+; rare2 part of kinesa
+; ############################################
+
+LET ( kinesarare2 BLOCK (
+    BUTTON ( TEXT 'q' COLOR brown )
+DR    BUTTON ( TEXT 'w' COLOR brown )
+DL    BUTTON ( TEXT 'x' COLOR brown )
+    ) )
+
+; net
+; #############################################
+
+LET ( net BLOCK (
+    BUTTON ( TEXT '@' COLOR blue )
+ DL    BUTTON ( TEXT '\\' COLOR blue )
+    BUTTON ( TEXT '_' COLOR blue )
+    ) )
+
+; numeric circular
+; #############################################
+
+LET ( numcirc BLOCK (
+    BUTTON ( TEXT '0' COLOR fuchsia )
+ DR    BUTTON ( TEXT '1' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "" north ) )
+ DR    BUTTON ( TEXT '2' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "abc" north ) )
+ DR    BUTTON ( TEXT '3' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "def" north ) )
+ DR    BUTTON ( TEXT '4' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "ghi" north ) )
+    BUTTON ( TEXT '5' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "jkl" north ) )
+    BUTTON ( TEXT '6' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "mno" north ) )
+    BUTTON ( TEXT '7' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "pqrs" north ) )
+    BUTTON ( TEXT '8' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "tuv" north ) )
+    BUTTON ( TEXT '9' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "wxyz" north ) )
+    BUTTON ( TEXT '.' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "ABR" north ) )
+    ) )
+    
+; numeric cube
+; #############################################
+
+LET ( numcube BLOCK (
+    BUTTON ( TEXT '1' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "" north ) )
+    BUTTON ( TEXT '2' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "abc" north ) )
+    BUTTON ( TEXT '3' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "def" north ) )
+ CRR    BUTTON ( TEXT '4' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "ghi" north ) )
+    BUTTON ( TEXT '5' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "jkl" north ) )
+    BUTTON ( TEXT '6' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "mno" north ) )
+ CRR    BUTTON ( TEXT '7' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "pqrs" north ) )
+    BUTTON ( TEXT '8' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "tuv" north ) )
+    BUTTON ( TEXT '9' COLOR fuchsia ADDTITLE ( south ) 
+        ADDTITLE ( TEXT "wxyz" north ) )
+ CRR    R
+    BUTTON ( TEXT '0' COLOR fuchsia )
+    ; ADDTITLE ( ) ADDTITLE ( TEXT '’' north ) )
+    ) )
+
+; joystick
+; #############################################
+
+LET ( joy BLOCK (
+    ; META ( SHIFT LOCK ADDTITLE ( script ) COLOR white )
+ UR SKIP 2
+    BUTTON ( KEY KEYDPADUP REPEAT
+        ADDTITLE ( TEXT '▲' script COLOR black ) COLOR gray )
+ DL    BUTTON ( KEY KEYDPADLEFT REPEAT
+        ADDTITLE ( TEXT '◀' script COLOR black ) COLOR gray )
+    BUTTON ( KEY KEYDPADRIGHT REPEAT 
+        ADDTITLE ( TEXT '▶' script COLOR black ) COLOR gray ) 
+ DL    BUTTON ( KEY KEYDPADDOWN REPEAT 
+        ADDTITLE ( TEXT '▼' script COLOR black ) COLOR gray )
+    ) )
+
+LET ( joycp BLOCK (
+    joy
+ UL UR UL UR
+    BUTTON ( KEY 'C' TURNON ( CTRL ) TURNOFF ( SHIFT ) 
+        ADDTITLE ( TEXT "COPY" script COLOR white ) COLOR blue )
+    BUTTON ( KEY 'V' TURNON ( CTRL ) TURNOFF ( SHIFT ) 
+        ADDTITLE ( TEXT "PASTE" script COLOR white ) COLOR blue )
+    ) )
+
+; #############################################    
+    
+LET ( newjoy BLOCK (
+	BUTTON ( PARA LEFT REPEAT
+		ADDTITLE ( TEXT "◀¶" COLOR black ) COLOR silver )
+	BUTTON ( KEY KEYDPADUP REPEAT
+		ADDTITLE ( TEXT '▲'
+		SIZE 1000 YOFFSET -200 COLOR black )
+		ADDTITLE ( TEXT "KEY" BOLD
+		SIZE 600 YOFFSET 200 COLOR black ) COLOR gray )
+	BUTTON ( PARA RIGHT REPEAT
+		ADDTITLE ( TEXT "¶▶" COLOR black ) COLOR silver )
+	META ( SHIFT LOCK ADDTITLE ( TEXT "Shift" script ) COLOR white )
+CRL
+	BUTTON ( WORD LEFT REPEAT 
+		ADDTITLE ( TEXT "◀◀" COLOR black ) COLOR silver )
+	BUTTON ( LEFT REPEAT 
+		ADDTITLE ( TEXT '◀' COLOR black ) COLOR gray )
+	BUTTON ( RIGHT  REPEAT
+		ADDTITLE ( TEXT '▶' COLOR black ) COLOR gray )
+	BUTTON ( WORD RIGHT REPEAT
+		ADDTITLE ( TEXT "▶▶" COLOR black ) COLOR silver )
+CRR	
+	BUTTON ( TOP
+		ADDTITLE ( TEXT '⇱' COLOR black ) COLOR silver )
+	BUTTON ( KEY KEYDPADDOWN REPEAT 
+		ADDTITLE ( TEXT '▼'
+		SIZE 1000 YOFFSET 200 COLOR black ) 
+		ADDTITLE ( TEXT "KEY" BOLD
+		SIZE 600 YOFFSET -200 COLOR black ) COLOR gray )
+	BUTTON ( BOTTOM
+		ADDTITLE ( TEXT '⇲' COLOR black ) COLOR silver )
+	BUTTON ( TOGGLE CURSOR
+		ADDTITLE ( TEXT "Cur" script ) 
+		COLOR white )
+
+;	BUTTON ( KEY KEYDPADLEFT REPEAT
+;		ADDTITLE ( TEXT '◀' COLOR black ) COLOR gray )
+;	BUTTON ( KEY KEYDPADRIGHT REPEAT 
+;		ADDTITLE ( TEXT '▶' COLOR black ) COLOR gray ) 
+	) ) 
+    
+; #############################################
+
+ADDMODIFY (ID charsacc IGNORESPACE 
+   ROLLS (
+   "aáAÁ"
+   "bßB"
+   "c¢©C"
+   "dD"
+   "eé€EÉ"
+   "f£F"
+   "gG" 
+   "hH"
+   "iíIÍ"
+   "jJ"
+   "kK" 
+   "lL"
+   "mµM"
+   "nN"
+   "oóöőOÓÖŐ"
+   "p§P¶"
+   "qQ"
+   "r®R"
+   "s$S"
+   "tT"
+   "uúüűUÚÜŰ"
+   "v¤V"
+   "wW"
+   "xX"
+   "y¥Y"
+   "zZ"
+   "({[<«"
+   ")}]>»"
+   "\"„”"
+   "\'’"
+   ".?!…"
+   ",;:"
+   "-–"
+   "/÷"
+   "+±†‡"
+   "%‰"
+   "*×"
+   "0°"
+   " ‑" ; non-breaking space and non breaking hyphen.
+   "#`~^") ) ; Special symbols, rarely needed
+
+; #############################################

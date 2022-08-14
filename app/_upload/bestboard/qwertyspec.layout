@@ -1,0 +1,88 @@
+COAT ( 1000 )
+
+ADDLAYOUT ( ID qwertyspec ) 
+
+DEFAULT ( BUTTON ( COLOR 0nroyalblue ))
+DEFAULT ( ADDTITLE ( COLOR 0nYELLOW ))
+BLOCK ( ROW 2 COLUMN 4
+	BUTTON ( TEXT "Android" ADDTITLE ( TEXT "$1F64B" ) )
+	BUTTON ( TEXT ":-)" ADDTITLE ( TEXT "$1F60A" ) )
+	BUTTON ( TEXT ":-(" ADDTITLE ( TEXT "$1F620" ) )
+	BUTTON ( TEXT ";-)" ADDTITLE ( TEXT "$1F609" ) )
+	BUTTON ( TEXT ":'(" ADDTITLE ( TEXT "$1F622" ) )
+	BUTTON ( TEXT "<3" ADDTITLE ( TEXT "$1F495" ) )
+	)
+
+DEFAULT ( BUTTON ( COLOR 0nspringgreen ))
+DEFAULT ( ADDTITLE (  ))
+BLOCK ( ROW 3 COLUMN 3
+	BUTTON ( TEXT "\0300" )
+	BUTTON ( TEXT "\0301" )
+	BUTTON ( TEXT "\0302" )
+	BUTTON ( TEXT "\030C" )
+	BUTTON ( TEXT "\030A" )
+	BUTTON ( TEXT "\0308" )
+	BUTTON ( TEXT "\030B" )
+	BUTTON ( TEXT "\0327" )
+	)
+	
+DEFAULT ( BUTTON ( COLOR 0ncyan ))
+DEFAULT ( ADDTITLE ())
+BLOCK ( ROW 1 COLUMN 2
+	BUTTON (TEXT "!")
+	BUTTON (TEXT "@")
+	BUTTON (TEXT "#")
+	BUTTON (TEXT "\$")
+	BUTTON (TEXT "%")
+	BUTTON (TEXT "^")
+	BUTTON (TEXT "&")
+	BUTTON (TEXT "*")
+	BUTTON (TEXT "(")
+	BUTTON (TEXT ")")
+	)
+	
+;  .,:;?! "   (){}[]    <=>*/-%+ @\_     '|#&
+; –… „” `~$^
+; ° ¡¿ ¤ ¢£¥§ «» µ¶ ×÷ ©®
+
+BLOCK ( ROW 1 COLUMN 1
+	BUTTON ( TEXT "~" )
+SKIP 10
+	BUTTON ( TEXT "_" )
+	BUTTON ( TEXT "+" )
+DL
+	BUTTON ( TEXT "{" )
+	BUTTON ( TEXT "}" )
+	BUTTON ( TEXT "|" )
+DL L L
+	BUTTON ( TEXT ":" )
+	BUTTON ( TEXT "\"" )
+DL L L	
+	BUTTON ( TEXT "<" )
+	BUTTON ( TEXT ">" )
+	BUTTON ( TEXT "?" )
+	)
+
+DEFAULT ( BUTTON ( COLOR 0nAZURE ))
+BLOCK ( ROW 2 COLUMN 3
+	BUTTON ( TIME ADDTITLE (ITALICS))
+	SKIP 6
+
+	BUTTON ( TEXT "°" )
+	BUTTON ( TEXT "„" )
+	BUTTON ( TEXT "”" )
+CRR 
+	SKIP 8
+	BUTTON ( TEXT "–" )
+CRR
+	BUTTON ( TEXT "«" )
+	BUTTON ( TEXT "»" )
+	BUTTON ( TEXT "×" )
+	BUTTON ( TEXT "÷" )
+	BUTTON ( TEXT "¿" )
+	BUTTON ( TEXT "¡" )
+	BUTTON ( TEXT "…" )
+	)
+	
+INCLUDE ("qwertymeta.layout")
+	

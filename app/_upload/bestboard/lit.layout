@@ -1,0 +1,106 @@
+COAT ( 1000 )
+
+BLOCK ( ROW 1 COLUMN 1 SWITCH ( BACK ADDTITLE ( link TEXT "Lit" ) COLOR magenta ))
+
+BLOCK ( ROW 1 COLUMN 4 kinesacentr )
+BLOCK ( ROW 1 COLUMN 3 kinesaaccent )
+BLOCK ( ROW 1 COLUMN 2 kinesarare )
+;BLOCK ( ROW 4 COLUMN 11 net )
+;BLOCK ( ROW 3 COLUMN 1 numcirc )
+BLOCK ( ROW 4 COLUMN 10 joy )
+
+BLOCK ( ROW 3 COLUMN 13
+	BUTTON ( TOP
+		ADDTITLE ( TEXT '⇱' XOFFSET -750 ) COLOR silver )
+DL DR
+	BUTTON ( BOTTOM
+		ADDTITLE ( TEXT '⇲' XOFFSET -750 ) COLOR silver ))
+
+; meta
+
+DEFAULT ( ADDTITLE ( SIZE 800 BOLD COLOR magenta ))
+DEFAULT ( BUTTON ( COLOR white ))
+DEFAULT ( ENTER ( COLOR white ))
+DEFAULT ( META ( COLOR white ))
+DEFAULT ( MODIFY ( ROLL charsacc ADDTITLE ( TEXT '↺' SIZE 1200 ) COLOR white ))
+
+BLOCK ( ROW 2 COLUMN 1 
+	BUTTON ( TEXT '\t' ADDTITLE (TEXT "⇥" XOFFSET 750 ) )
+DR
+	META ( SHIFT )
+DR
+	BUTTON ( CHANGECASE ( LOWER UPPER SENTENCE ) ADDTITLE ( TEXT "CASE" ))
+DL
+	META ( CTRL )
+	META ( CAPS )
+SKIP 8
+	MODIFY ( )
+	)
+	
+BLOCK ( ROW 1 COLUMN 9 
+	BUTTON ( BACKSPACE REPEAT )
+SKIP 2	
+	BUTTON ( DELETE REPEAT )
+CRR
+	ENTER ( ERASESPACE AROUND AUTOCAPS ON) )
+	
+; orange
+
+DEFAULT ( ADDTITLE () )
+DEFAULT ( BUTTON ( COLOR orange 
+	ADDTITLE ( YOFFSET 250 ) 
+	ADDTITLE ( SIZE 800 YOFFSET -550 GETSECOND COLOR 0nTOMATO )))
+
+BLOCK ( ROW 1 COLUMN 10
+	BUTTON ( TEXT '?' endsentence SECOND ( TEXT '\\' ))
+DR
+	BUTTON ( TEXT '!' endsentence SECOND ( TEXT '_' ))
+DL
+	BUTTON ( TEXT '-' SECOND ( TEXT '&' ))
+DL
+	BUTTON ( TEXT '.' endsentence SECOND ( TEXT '…' ))
+DL
+	BUTTON ( TEXT ',' endsign SECOND ( TEXT '\'' ))
+	)
+
+; green	
+
+DEFAULT ( BUTTON ( COLOR green
+	ADDTITLE ( YOFFSET 250 ) 
+	ADDTITLE ( SIZE 800 YOFFSET -550 GETSECOND COLOR 0nTOMATO )
+	)) 	
+
+; "(){}[]<=>*/%+@\_'|#&…„”`~$^§°     €÷×«»ß¤
+;                                               `    §      €÷×«»ß¤
+
+	
+BLOCK ( ROW 1 COLUMN 11
+	BUTTON ( TEXT '@'  SECOND ( TEXT '|' ))
+DR
+	BUTTON ( TEXT '„' startsign SECOND ( TEXT '«' startsign))
+	BUTTON ( TEXT '”' endsign SECOND ( TEXT '»' endsign))
+CRR    
+	BUTTON ( TEXT '–' middlesign SECOND ( TEXT '$' ))
+DL
+	BUTTON ( TEXT ':' endsign SECOND ( TEXT '#' ))
+DL    
+	BUTTON ( TEXT ';' endsign SECOND ( TEXT '\"' ))
+	)
+	
+
+; §'"+!%/=() 
+; ?:_
+; ,.-
+; ~°
+;\|Ä€Í÷×
+;äđ«[]»íłŁ$ß¤
+;<>#&@{}<;>*
+
+;  .,:;?! "   (){}[]    <=>*/-%+ @\_     '|#&
+; –… „” `~$^  
+; §x°€÷×«»ß¤
+
+; "(){}[]<=>*/%+@\_'|#&…„”`~$^§x°€÷×«»ß¤
+
+
+

@@ -1,0 +1,39 @@
+﻿COAT ( 1000 )
+
+LET ( black 0nblack ); K ) ; 0c0 )
+LET ( white 0nsnow ); W ) ; 0cffe )
+LET ( gray 0ngray ); LG ) ; 0c8 )
+LET ( silver 0nsilver ); PG ) ;0ca )
+
+LET ( yellow 0nlightgoldenrodyellow ); PDY ) ; 0cee4 )
+LET ( green 0npalegreen ); PDG ) ; 0c8e8 )
+LET ( blue 0nskyblue ); PDB ) ; 0c99e )
+LET ( rose 0npink ); PDP ) ; 0ce6b2ab )
+LET ( brown 0nburlywood ); LDO ) ; 0ccb2 )
+LET ( purple 0nplum ); )LDM ) ; 0cc673d9 )
+LET ( fuchsia 0nmistyrose ) ; )PWM ) ;  0cfcf )
+LET ( orange 0nlightsalmon ); )LOR ) ; 0cf84 )
+
+LET ( khaki 0nbisque ); LWY ) ; 0cd4ddaa )
+LET ( magenta 0ndarkmagenta ) ;DDV ) ; 0c800080 )
+LET ( red 0nfirebrick ) ; MFR ) ; 0ca00 )
+
+LET ( pink 0npink ); PDR ) ; 0ce99 )
+
+LET ( ENTERTEXT '✓' )
+
+SHOWTITLES (
+	ENTERTEXT ENTERTEXT
+	GOTEXT ENTERTEXT
+	SEARCHTEXT ENTERTEXT
+	SENDTEXT ENTERTEXT
+	NEXTTEXT ENTERTEXT
+	DONETEXT ENTERTEXT
+	PREVTEXT ENTERTEXT
+	NONETEXT ENTERTEXT
+	UNKNOWNTEXT ENTERTEXT
+	AUTOFUNCON "Auto"
+	AUTOFUNCOFF "Off" )
+
+ACTIVECOLOR magenta
+LOCKCOLOR red

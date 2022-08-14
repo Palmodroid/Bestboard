@@ -1,0 +1,32 @@
+COAT ( 1000 )
+
+LET ( kinesa BLOCK (
+	BUTTON ( TEXT 'v' COLOR blue )
+	BUTTON ( TEXT 'c' COLOR green ) 
+	BUTTON ( TEXT 'z' COLOR green ) 
+	BUTTON ( TEXT 'm' COLOR green ) 
+CRL
+	BUTTON ( TEXT 'b' COLOR blue ) 
+	BUTTON ( TEXT 'l' COLOR green ) 
+	BUTTON ( TEXT 's' COLOR yellow ) 
+	BUTTON ( TEXT 'e' COLOR yellow ) 
+	BUTTON ( TEXT 't' COLOR green ) 
+CRL    
+	BUTTON ( TEXT 'f' COLOR blue )
+	BUTTON ( TEXT 'r' COLOR green ) 
+	BUTTON ( TEXT 'a' COLOR yellow ) 
+	SPACETRAVEL ( COLOR fuchsia ADDTITLE ( COLOR red) whitespace ) 
+	BUTTON ( TEXT 'n' COLOR yellow ) 
+	BUTTON ( TEXT 'y' COLOR green ) 
+CRR    
+	BUTTON ( TEXT 'j' COLOR blue ) 
+	BUTTON ( TEXT 'o' COLOR green ) 
+	BUTTON ( TEXT 'k' COLOR yellow ) 
+	BUTTON ( TEXT 'i' COLOR yellow ) 
+	BUTTON ( TEXT 'g' COLOR green )
+CRR    
+	BUTTON ( TEXT 'h' COLOR blue ) 
+	BUTTON ( TEXT 'p' COLOR green ) 
+	BUTTON ( TEXT 'u' COLOR green ) 
+	BUTTON ( TEXT 'd' COLOR green ) 
+	) )

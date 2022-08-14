@@ -1,0 +1,409 @@
+COAT ( 1000 )
+
+	; LET ( PACKET ( AUTOCAPS ( ON / OFF / HOLD / WAIT ) STRINGCAPS ERASESPACE ( BEFORE / AFTER / AROUND ) AUTOSPACE ( BEFORE / AFTER / AROUND ) ))
+
+LET ( startsign PACKET ( 
+	AUTOCAPS ( HOLD )
+	ERASESPACE ( AROUND ) 
+	AUTOSPACE ( BEFORE )))
+
+LET ( middlesign PACKET ( 
+	AUTOCAPS ( HOLD )
+	ERASESPACE ( AROUND ) 
+	AUTOSPACE ( AROUND )))
+
+LET ( endsign PACKET ( 
+	AUTOCAPS ( HOLD )
+	ERASESPACE ( AROUND ) 
+	AUTOSPACE ( AFTER )))
+
+LET ( endsentence PACKET (
+	AUTOCAPS ( ON )
+	ERASESPACE ( AROUND ) 
+	AUTOSPACE ( AFTER )
+	)) 
+
+LET ( whitespace PACKET ( 
+	AUTOCAPS ( HOLD )
+	ERASESPACE ( AROUND ))) 
+
+LET ( endpara PACKET (
+	AUTOCAPS ( ON )
+	ERASESPACE ( AROUND ))) 
+
+
+
+LET ( black 0nblack ); K ) ; 0c0 )
+LET ( white 0nsnow ); W ) ; 0cffe )
+LET ( gray 0ngray ); LG ) ; 0c8 )
+LET ( silver 0nsilver ); PG ) ;0ca )
+
+LET ( yellow 0nlightgoldenrodyellow ); PDY ) ; 0cee4 )
+LET ( green 0npalegreen ); PDG ) ; 0c8e8 )
+LET ( blue 0nskyblue ); PDB ) ; 0c99e )
+LET ( rose 0npink ); PDP ) ; 0ce6b2ab )
+LET ( brown 0nburlywood ); LDO ) ; 0ccb2 )
+LET ( purple 0nplum ); )LDM ) ; 0cc673d9 )
+LET ( fuchsia 0nmistyrose ) ; )PWM ) ;  0cfcf )
+LET ( orange 0nlightsalmon ); )LOR ) ; 0cf84 )
+
+LET ( khaki 0nbisque ); LWY ) ; 0cd4ddaa )
+LET ( magenta 0ndarkmagenta ) ;DDV ) ; 0c800080 )
+LET ( red 0nfirebrick ) ; MFR ) ; 0ca00 )
+
+LET ( pink 0npink ); PDR ) ; 0ce99 )
+
+LET ( ENTERTEXT '✓' )
+
+SHOWTITLES (
+	ENTERTEXT ENTERTEXT
+	GOTEXT ENTERTEXT
+	SEARCHTEXT ENTERTEXT
+	SENDTEXT ENTERTEXT
+	NEXTTEXT ENTERTEXT
+	DONETEXT ENTERTEXT
+	PREVTEXT ENTERTEXT
+	NONETEXT ENTERTEXT
+	UNKNOWNTEXT ENTERTEXT
+	AUTOFUNCON "Auto"
+	AUTOFUNCOFF "Off" )
+
+ACTIVECOLOR magenta
+LOCKCOLOR red
+
+LET ( circle0 0nmistyrose ) 
+LET ( circle1 0nlightgoldenrodyellow ) 
+LET ( circle2 0npalegreen ) 
+LET ( circle3 0nskyblue )
+
+LET ( kinesa BLOCK (
+   BUTTON ( TEXT 'v' COLOR circle3 )
+   BUTTON ( TEXT 'c' COLOR circle2 ) 
+   BUTTON ( TEXT 'z' COLOR circle2 ) 
+   BUTTON ( TEXT 'm' COLOR circle2 ) 
+CRL
+   BUTTON ( TEXT 'b' COLOR circle3 ) 
+   BUTTON ( TEXT 'l' COLOR circle2 )
+   BUTTON ( TEXT 's' COLOR circle1 ) 
+   BUTTON ( TEXT 'e' COLOR circle1 ) 
+   BUTTON ( TEXT 't' COLOR circle2 ) 
+CRL    
+   BUTTON ( TEXT 'f' COLOR circle3 )
+   BUTTON ( TEXT 'r' COLOR circle2 ) 
+   BUTTON ( TEXT 'a' COLOR circle1 ) 
+   SKIP ( 1 )
+   BUTTON ( TEXT 'n' COLOR circle1 ) 
+   BUTTON ( TEXT 'y' COLOR circle2 ) 
+CRR    
+   BUTTON ( TEXT 'j' COLOR circle3 ) 
+   BUTTON ( TEXT 'o' COLOR circle2 ) 
+   BUTTON ( TEXT 'k' COLOR circle1 ) 
+   BUTTON ( TEXT 'i' COLOR circle1 ) 
+   BUTTON ( TEXT 'g' COLOR circle2 )
+CRR    
+   BUTTON ( TEXT 'h' COLOR circle3 ) 
+   BUTTON ( TEXT 'p' COLOR circle2 ) 
+   BUTTON ( TEXT 'u' COLOR circle2 ) 
+   BUTTON ( TEXT 'd' COLOR circle2 )
+UL UL 
+   ) )
+
+
+LET ( whitespace PACKET ( 
+	AUTOCAPS ( HOLD )
+	ERASESPACE ( AROUND ))) 
+
+
+
+DEFAULT ( ADDLAYOUT ( HALFCOLUMNS 15 ROWS 5 ALIGN EVENS ASBOARD ))
+
+ADDLAYOUT ( ID kinesabase START )
+
+
+; Arrows
+
+DEFAULT ( BUTTON ( REPEAT COLOR gray ))
+DEFAULT ( ADDTITLE ( XOFFSET -750 SIZE 1800 COLOR black ))
+BLOCK ( ROW 2 COLUMN 8
+	BUTTON ( RIGHT ADDTITLE ( TEXT '▶' )) 
+DL DR
+	BUTTON ( LEFT ADDTITLE ( TEXT '◀' ))
+    	)
+
+; Signs
+
+DEFAULT ( BUTTON ( COLOR orange ))
+DEFAULT ( ADDTITLE (  ))
+BLOCK ( ROW 3 COLUMN 8
+	BUTTON ( TEXT '-' SECOND ( TEXT '-' middlesign ))
+DL
+	BUTTON ( TEXT '.' endsentence )
+DL
+	BUTTON ( TEXT ',' endsign )
+	)
+ 
+; Meta and links (links' colors are changed)
+	
+DEFAULT ( BUTTON ( COLOR white  ))
+DEFAULT ( ADDTITLE ( SIZE 800 BOLD COLOR magenta ))
+
+BLOCK ( ROW 2 COLUMN 1 
+	BUTTON ( CHANGECASE ( LOWER UPPER SENTENCE ) ADDTITLE ( TEXT "CASE" ))
+DL
+	BUTTON ( TEXT '\t' ADDTITLE ( TEXT "⇥" XOFFSET 750 ) whitespace )
+DR    
+	META ( CAPS COLOR white )
+	)
+
+BLOCK ( ROW 1 COLUMN 7
+	BUTTON ( BACKSPACE REPEAT )
+	MEMORY ( id mem1 ADDTITLE ( SIZE 600 COLOR black) COLOR gray )
+DL	
+	ENTER ( endpara COLOR white )
+DR DL DR	
+	MODIFY ( ROLL charsacc ADDTITLE ( TEXT "o↺ő" ) COLOR white )
+	)
+
+
+
+
+BLOCK ( ROW 1 COLUMN 3 
+	kinesa 
+	JOY ( TEXT ' ' whitespace COLOR circle0 
+		EAST ( RIGHT )
+		WEST ( LEFT ) 
+		NORTH ( KEY KEYDPADUP )
+		SOUTH ( KEY KEYDPADDOWN ) )) 
+
+DEFAULT ( ADDTITLE () )
+DEFAULT ( EXTEND ( CLEARTITLES 
+	ADDTITLE ( YOFFSET 150 )))
+LET ( northtitle ADDTITLE (SIZE 600 YOFFSET -550 COLOR 0nTOMATO ))
+
+BLOCK ( ROW 4 COLUMN 2 
+	EXTEND ( TOSTICKY SECOND (TEXT ("0")) ADDTITLE ( northtitle GETSECOND )) UL
+	EXTEND ( TOSTICKY SECOND (TEXT ("1")) ADDTITLE ( northtitle TEXT ("1"))) UR
+	EXTEND ( TOSTICKY SECOND (TEXT ("2")) ADDTITLE ( northtitle TEXT ("2"))) UR
+	EXTEND ( TOSTICKY SECOND (TEXT ("3")) ADDTITLE ( northtitle TEXT ("3")))
+	EXTEND ( TOSTICKY SECOND (TEXT ("4")) ADDTITLE ( northtitle TEXT ("4")))
+	EXTEND ( TOSTICKY SECOND (TEXT ("5")) ADDTITLE ( northtitle TEXT ("5")))
+	EXTEND ( TOSTICKY SECOND (TEXT ("6")) ADDTITLE ( northtitle TEXT ("6"))) DR
+	EXTEND ( TOSTICKY SECOND (TEXT ("7")) ADDTITLE ( northtitle TEXT ("7"))) DR
+	EXTEND ( TOSTICKY SECOND (TEXT ("8")) ADDTITLE ( northtitle TEXT ("8"))) DL
+	EXTEND ( TOSTICKY SECOND (TEXT ("9")) ADDTITLE ( northtitle TEXT ("9")))
+
+HOME UR
+
+	EXTEND ( TOSTICKY SOUTH (TEXT ("w")) ADDTITLE ( northtitle TEXT ("w"))) ; r
+UR	EXTEND ( TOSTICKY SOUTH (TEXT ("q")) ADDTITLE ( northtitle TEXT ("q"))) ; l
+	EXTEND ( TOSTICKY SOUTH (TEXT ("x")) ADDTITLE ( northtitle TEXT ("x"))) ; s
+
+	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("*"))			; e
+		SOUTH (TEXT ("*")) 
+		NORTH (TEXT ("é")) ) 
+DR	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("*"))			
+		SOUTH (TEXT ("*")) )						; n 
+DL	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("*"))			; i
+		SOUTH (TEXT ("*")) 
+		NORTH (TEXT ("í")) ) 
+L UL	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("*"))			; a
+		SOUTH (TEXT ("*")) 
+		NORTH (TEXT ("á")) ) 
+DL	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("*"))			; o
+		SOUTH (TEXT ("*")) 
+		NORTH (TEXT ("ó")) 
+		WEST (TEXT ("ö")) 
+		EAST (TEXT ("ő")) )
+	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("k"))			
+		SOUTH (TEXT ("k")) )						; k 
+DL L	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("\\"))
+		SOUTH (TEXT ("\\")) )						; h
+	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("@"))
+		SOUTH (TEXT ("@")) )						; p
+	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("*"))			; u
+		SOUTH (TEXT ("*")) 
+		NORTH (TEXT ("ú")) 
+		WEST (TEXT ("ü")) 
+		EAST (TEXT ("ű")) )
+	EXTEND ( TOSTICKY ADDTITLE ( northtitle TEXT ("d"))
+		SOUTH (TEXT ("d")) )						; d
+	) 
+
+
+; kinesalayout
+
+
+ADDLAYOUT ( ID kinesaspec )
+
+; Arrows !! SAME
+
+DEFAULT ( BUTTON ( REPEAT COLOR gray ))
+DEFAULT ( ADDTITLE ( XOFFSET -750 SIZE 1800 COLOR black ))
+BLOCK ( ROW 2 COLUMN 8
+	BUTTON ( RIGHT ADDTITLE ( TEXT '▶' )) 
+DL DR
+	BUTTON ( LEFT ADDTITLE ( TEXT '◀' ))
+    	)
+    	
+; Meta and links (links' colors are changed) !! SAME - but CAPS, CASE are missing
+	
+DEFAULT ( BUTTON ( COLOR white  ))
+DEFAULT ( ADDTITLE ( SIZE 800 BOLD COLOR magenta ))
+
+BLOCK ( ROW 2 COLUMN 1 
+;	BUTTON ( CHANGECASE ( LOWER UPPER SENTENCE ) ADDTITLE ( TEXT "CASE" ))
+DL
+	BUTTON ( TEXT '\t' ADDTITLE ( TEXT "⇥" XOFFSET 750 ) whitespace )
+DR    
+;	META ( CAPS COLOR white )
+	)
+
+BLOCK ( ROW 1 COLUMN 7
+	BUTTON ( BACKSPACE REPEAT )
+	MEMORY ( ID m1 ADDTITLE ( SIZE 600 COLOR black) COLOR gray )
+DL	
+	ENTER ( endpara COLOR white )
+DR DL DR	
+	MODIFY ( ROLL charsacc ADDTITLE ( TEXT "o↺ő" ) COLOR white )
+	)
+    	
+
+
+; INCLUDE ("numcube.ext")
+
+DEFAULT ( BUTTON ( ADDTITLE ( YOFFSET +300 SIZE 1000 ) COLOR fuchsia ))
+DEFAULT ( ADDTITLE ( YOFFSET -400 SIZE  800 COLOR red ) )
+
+LET ( numcube BLOCK (
+	BUTTON ( TEXT '1' ADDTITLE ( TEXT "" ))
+	BUTTON ( TEXT '2' ADDTITLE ( TEXT "abc" ))
+	BUTTON ( TEXT '3' ADDTITLE ( TEXT "def" ))
+CRL
+ 	BUTTON ( TEXT '4' ADDTITLE ( TEXT "ghi" ))
+ 	BUTTON ( TEXT '5'  ADDTITLE ( TEXT "jkl" ))
+ 	BUTTON ( TEXT '6' ADDTITLE ( TEXT "mno" ))
+CRL
+	BUTTON ( TEXT '7' ADDTITLE ( TEXT "pqrs" ))
+	BUTTON ( TEXT '8' ADDTITLE ( TEXT "tuv" ))
+	BUTTON ( TEXT '9' ADDTITLE ( TEXT "wxyz" ))
+DL
+	BUTTON ( TEXT '0' )
+	))
+
+
+BLOCK ( ROW 1 COLUMN 4
+	numcube
+	)
+	
+
+	
+DEFAULT ( BUTTON ( COLOR green ))
+DEFAULT ( ALTERNATE ( COLOR orange))
+DEFAULT ( ADDTITLE () )
+
+LET ( cal BUTTON ( COLOR yellow ADDTITLE ( BOLD COLOR red)))
+
+BLOCK ( ROW 2 COLUMN 6
+	BUTTON ( TEXT ( "=" ) )
+CRL
+	BUTTON ( TEXT ( "+" ) cal )
+	BUTTON ( TEXT ( "-" ) cal )
+	BUTTON ( TEXT ( "#" ) )
+CRL
+	BUTTON ( TEXT ( "*" ) cal )
+	BUTTON ( TEXT ( "/" ) cal )
+	BUTTON ( TEXT ( "%" ) )
+	)
+	
+
+LET ( uppertitle ADDTITLE ( SIZE 600 YOFFSET -600))
+LET ( middletitle ADDTITLE ( SIZE 600 ))
+LET ( lowertitle ADDTITLE ( SIZE 600 YOFFSET 600))
+
+
+BLOCK ( ROW 1 COLUMN 1
+R R
+	ALTERNATE (TEXT "(" SECOND ( TEXT ")" )
+		ADDTITLE ( uppertitle TEXT "{  }" )
+		ADDTITLE (middletitle TEXT "(   )" )
+		ADDTITLE ( lowertitle TEXT "[  ]" ))
+CRR
+	ALTERNATE ( TEXT "„" SECOND ( TEXT  "”" ))
+	ALTERNATE ( TEXT "[" SECOND ( TEXT  "]" ))
+CRL R
+	ALTERNATE ( TEXT "<" SECOND ( TEXT  ">" ))
+CRR
+	BUTTON ( TEXT ( "…" ) )
+	BUTTON ( TEXT ( " " ) cal )
+	BUTTON ( TEXT ( "." ) cal )
+CRL R
+	BUTTON ( TEXT ( "\'" ) )
+	BUTTON ( TEXT ( "\"" ) )
+	BUTTON ( TEXT ( "@" ) COLOR blue )
+	BUTTON ( TEXT ( "_" )  COLOR blue)
+	BUTTON ( TEXT ( "\\" )  COLOR blue)
+	BUTTON ( TEXT ( "&" ) )
+	)
+	
+; "(){}[]<=>*/%+@\_'|#&…„”`~$^§x°€÷×«»ß¤	
+;              \| &           	
+	
+DEFAULT ( SWITCH ( COLOR magenta  ))
+DEFAULT ( ADDTITLE ( SIZE 800 BOLD COLOR white ))
+
+BLOCK ( LAYOUT kinesabase ROW 1 COLUMN 2 
+	SWITCH ( BOARD kinesaspec ADDTITLE ( TEXT "&#?" ))
+	)
+BLOCK ( LAYOUT kinesabase ROW -1 COLUMN 2 
+	SWITCH ( BACK ADDTITLE ( TEXT "Mini" ))
+	)
+BLOCK ( LAYOUT kinesaspec ROW 1 COLUMN 2 
+	SWITCH ( BOARD kinesaspec LOCK ADDTITLE ( TEXT "abc" ))
+	)
+
+ADDMODIFY (ID charsacc IGNORESPACE 
+   ROLLS (
+   "aáAÁ"
+   "bßB"
+   "c¢©C"
+   "dD"
+   "eé€EÉ"
+   "f£F"
+   "gG" 
+   "hH"
+   "iíIÍ"
+   "jJ"
+   "kK" 
+   "lL"
+   "mµM"
+   "nN"
+   "oóöőOÓÖŐ"
+   "p§P¶"
+   "qQ"
+   "r®R"
+   "s$S"
+   "tT"
+   "uúüűUÚÜŰ"
+   "v¤V"
+   "wW"
+   "xX"
+   "y¥Y"
+   "zZ"
+   "({[<«"
+   ")}]>»"
+   "\"„”"
+   "\'’"
+   ".?!…"
+   ",;:"
+   "-–"
+   "/÷"
+   "+±†‡"
+   "%‰"
+   "*×"
+   "0°"
+   " ‑" ; non-breaking space and non breaking hyphen.
+   "#`~^") ) ; Special symbols, rarely needed
+
+   
+
+

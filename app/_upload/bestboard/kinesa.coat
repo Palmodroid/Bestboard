@@ -1,0 +1,28 @@
+﻿COAT ( 1000 )
+
+INCLUDE ("kinesacolors.ext")
+
+INCLUDE ("auto.ext")
+
+DEFAULT ( ADDLAYOUT ( HALFCOLUMNS 15 ROWS 5 ALIGN evens ASBOARD ))
+
+INCLUDE ("kinesabase.layout")
+
+INCLUDE ("kinesaspec.layout")
+
+DEFAULT ( SWITCH ( COLOR magenta  ))
+DEFAULT ( ADDTITLE ( SIZE 800 BOLD COLOR white ))
+
+BLOCK ( LAYOUT kinesabase ROW 1 COLUMN 2 
+	SWITCH ( BOARD kinesaspec ADDTITLE ( TEXT "&#?" ))
+	)
+BLOCK ( LAYOUT kinesabase ROW -1 COLUMN 2 
+	SWITCH ( BACK ADDTITLE ( TEXT "Mini" ))
+	)
+BLOCK ( LAYOUT kinesaspec ROW 1 COLUMN 2 
+	SWITCH ( BOARD kinesaspec LOCK ADDTITLE ( TEXT "abc" ))
+	)
+
+INCLUDE ("modify.ext")
+
+STOP

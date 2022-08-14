@@ -1,0 +1,1205 @@
+        DEFAULT {PARAMETER_DEFAULT}
+        LET {PARAMETER_CHANGE_LABEL}
+        DEFINE {PARAMETER_LABEL}
+
+        INCLUDE {coat}
+
+        NAME string
+        VERSION int
+        AUTHOR string
+        ADDTAGS (string | PARAMETER_MOD_LIST)
+        DESCRIPTION string
+        DOCFILE file
+        DOCURI string
+
+        LOCALE {   
+		LANGUAGE string
+		COUNTRY string
+		VARIANT string }
+        
+        ALPHA int
+
+        ACTIVECOLOR color
+        LOCKCOLOR color
+        AUTOCOLOR color
+        TOUCHCOLOR color
+        STROKECOLOR color
+        FONT file
+
+        SHOWTITLES {
+		ENTERTEXT text
+		GOTEXT text
+		SEARCHTEXT text
+		SENDTEXT text
+		NEXTTEXT text
+		DONETEXT text
+		PREVTEXT text
+		NONETEXT text
+		UNKNOWNTEXT text
+		AUTOFUNCON text
+		AUTOFUNCOFF text }
+
+        ADDBOARD {
+		ID keyword
+		LAYOUT keyword
+		PORTRAIT keyword
+		LANDSCAPE keyword
+		LOCK
+		START }
+
+	ADDLAYOUT {
+                ID keyword
+                HEXAGONAL 
+                WIDE
+		COLUMNS int
+		HALFCOLUMNS int
+		ROWS int
+		ALIGN keyword 
+		COLOR color
+		LINECOLOR color
+		LINESIZE int
+		PICTURE file
+
+		TURNON keyword | PARAMETER_MOD_LIST 
+		TURNOFF keyword | PARAMETER_MOD_LIST
+
+                ASBOARD
+                LOCK 
+                START }
+ 
+        BLOCK {
+		LAYOUT keyword
+		COLUMN int
+		ROW int
+
+		SKIP int 
+                DL 
+                DR 
+                CRL 
+                CRR 
+                L 
+                R 
+                UL 
+                UR 
+                FINDFREE 
+                HOME 
+
+                BUTTON | PARAMETER_MOD_MULTIPLE
+                SINGLE | PARAMETER_MOD_MULTIPLE
+                DOUBLE | PARAMETER_MOD_MULTIPLE
+                ALTERNATE | PARAMETER_MOD_MULTIPLE
+                STICKY | PARAMETER_MOD_MULTIPLE
+                JOY | PARAMETER_MOD_MULTIPLE
+                LIST | PARAMETER_MOD_MULTIPLE
+                MULTI | PARAMETER_MOD_MULTIPLE
+                MODIFY | PARAMETER_MOD_MULTIPLE
+                SPACETRAVEL | PARAMETER_MOD_MULTIPLE
+                MEMORY | PARAMETER_MOD_MULTIPLE
+                PROGRAM | PARAMETER_MOD_MULTIPLE
+                AUTOSHORTCUT | PARAMETER_MOD_MULTIPLE
+                FINDSHORTCUT | PARAMETER_MOD_MULTIPLE
+                ENTER | PARAMETER_MOD_MULTIPLE
+                META | PARAMETER_MOD_MULTIPLE
+                SWITCH | PARAMETER_MOD_MULTIPLE
+                EXTEND | PARAMETER_MOD_MULTIPLE
+                }
+ 
+
+        Packets:
+        
+        PACKET
+        FIRST
+
+        SECOND
+
+        NORTH
+        EAST
+        SOUTH
+        WEST
+
+        HEXR
+        HEXDR
+        HEXDL
+        HEXL
+        HEXUL
+        HEXUR
+
+        CLOCK1
+        CLOCK2
+        CLOCK3
+        CLOCK4
+        CLOCK5
+        CLOCK6
+        CLOCK7
+        CLOCK8
+        CLOCK9
+        CLOCK10
+        CLOCK11
+        CLOCK12
+
+
+        Packet paramteres:
+		TEXT text
+		
+		TIME PARAMETER_FLAG
+		FORMAT text
+		
+		VARIA keyword
+		
+		KEY int
+		COMBINE
+		
+		AUTOCAPS keyword
+		STRINGCAPS
+		AUTOSPACE keyword
+		ERASESPACE keyword
+		
+		DELETE
+		BACKSPACE
+		RELOAD
+		SETTINGS
+		TOGGLE keyword
+		SELECTALL
+		HELP
+		TEST
+		RUN string
+		HTML string
+		WEB string
+		LOAD string
+		CHANGECASE { LOWER UPPER SENTENCE }
+		
+		MOD { ROLL REVERSE }
+		
+		TURNON TURNOFF
+		TIME FORMAT
+		
+		JUMP { BOARD BACK LOCK }
+		TOP PARAMETER_FLAG
+		LEFT PARAMETER_FLAG
+		RIGHT PARAMETER_FLAG
+		BOTTOM PARAMETER_FLAG
+		WORD PARAMETER_FLAG
+		PARA PARAMETER_FLAG
+		CURSOR keyword
+		SELECT keyword }
+
+        // Button definitions
+        // ***************************************
+
+        long[] buttonArray = {
+                ADDTITLE | PARAMETER_MOD_MULTIPLE
+                COLOR
+                ONSTAY
+                ONCIRCLE
+                OVERWRITE};
+
+        BUTTON ArrayUtils.concat( packetArray buttonArray {
+                FIRST
+                SECOND
+                REPEAT TWIN CAPITAL }))
+                .method("setButton").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({PACKET FIRST SECOND}
+
+        SINGLE ArrayUtils.concat(packetArray buttonArray {
+                FIRST
+                REPEAT TWIN CAPITAL }))
+                .method("setSingle").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET FIRST SECOND}
+
+        REPEAT PARAMETER_FLAG
+        TWIN PARAMETER_FLAG
+        CAPITAL PARAMETER_FLAG
+
+        DOUBLE ArrayUtils.concat(packetArray buttonArray {
+                FIRST
+                SECOND }))
+                .method("setDouble").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET FIRST SECOND}
+
+        ALTERNATE ArrayUtils.concat(packetArray buttonArray {
+                FIRST
+                SECOND }))
+                .method("setAlternate").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET FIRST SECOND}
+
+        STICKY ArrayUtils.concat(packetArray buttonArray {
+                FIRST
+                NORTH EAST SOUTH WEST
+                HEXR HEXDR HEXDL HEXL HEXUL HEXUR
+                CLOCK1 CLOCK2 CLOCK3 CLOCK4 CLOCK5 CLOCK6
+                CLOCK7 CLOCK8 CLOCK9 CLOCK10 CLOCK11 CLOCK12
+                REPEAT }))
+                .method("setSticky").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET FIRST
+                        NORTH EAST SOUTH WEST
+                        HEXR HEXDR HEXDL HEXL HEXUL HEXUR
+                        CLOCK1 CLOCK2 CLOCK3 CLOCK4 CLOCK5 CLOCK6
+                        CLOCK7 CLOCK8 CLOCK9 CLOCK10 CLOCK11 CLOCK12 }
+
+        JOY ArrayUtils.concat(packetArray buttonArray {
+                FIRST
+                NORTH
+                EAST
+                SOUTH
+                WEST }))
+                .method("setStickyJoy").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET FIRST
+                        NORTH EAST SOUTH WEST}
+
+        MULTI ArrayUtils.concat(buttonArray {
+                ADD | PARAMETER_MOD_MULTIPLE }))
+                .method("setMulti").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON}
+
+        ADD {
+                TEXT
+                // FIELD
+                AUTOCAPS
+                STRINGCAPS
+                ERASESPACE
+                AUTOSPACE
+                TIME FORMAT
+
+                // If only Text-packet is allowed here then rem next rows!!
+                /* KEY
+                FORCECAPS FORCESHIFT FORCECTRL FORCEALT
+                DO */}).method("packet").allowAsLabel().allowAsDefault()
+                .labels({PACKET}
+
+        LIST ArrayUtils.concat(buttonArray {
+                TEXT
+                // FIELD
+                AUTOCAPS
+                STRINGCAPS
+                ERASESPACE
+                AUTOSPACE
+                ADDTEXT | PARAMETER_MOD_MULTIPLE
+                SECOND}))
+                .method("setList").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET SECOND }
+
+        ADDTEXT text
+
+        MODIFY {
+                ROLL
+                REVERSE
+
+                ADDTITLE | PARAMETER_MOD_MULTIPLE
+                COLOR
+                // ONSTAY
+                // ONCIRCLE
+                OVERWRITE})
+                .method("setModify").group(BUTTON).allowAsLabel().allowAsDefault().labels({BUTTON}
+
+        ROLL keyword
+        REVERSE PARAMETER_FLAG
+
+        ENTER ArrayUtils.concat( buttonArray {
+                TEXT
+                // FIELD
+                AUTOCAPS
+                STRINGCAPS
+                ERASESPACE
+                AUTOSPACE
+                KEY
+                TURNON TURNOFF
+                REPEAT }))
+                .method("setEnter").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET}
+
+        // REPEAT PARAMETER_FLAG
+
+        SPACETRAVEL ArrayUtils.concat(packetArray buttonArray {
+                SECOND }))
+                .method("setSpaceTravel").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET}
+
+        MEMORY ArrayUtils.concat(buttonArray {
+                TEXT
+                AUTOCAPS
+                STRINGCAPS
+                ERASESPACE
+                AUTOSPACE
+                ID}))
+                .method("setMemory").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET}
+
+        PROGRAM ArrayUtils.concat(buttonArray {
+                RUN }))
+                .method("setProgram").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON PACKET}
+
+        AUTOSHORTCUT ArrayUtils.concat(buttonArray {
+                ID }))
+                .method("setAutoShortCut").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON}
+        // ID keyword
+
+        FINDSHORTCUT ArrayUtils.concat(buttonArray {
+                ID }))
+                .method("setFindShortCut").group(BUTTON).allowAsLabel().allowAsDefault()
+                .labels({BUTTON}
+        // ID keyword
+
+        META {
+                CAPS
+                SHIFT
+                CTRL
+                ALT
+                LOCK
+
+                ADDTITLE | PARAMETER_MOD_MULTIPLE
+                COLOR
+                OVERWRITE})
+                .method("setMeta").group(BUTTON).allowAsLabel().allowAsDefault().labels({BUTTON}
+
+        CAPS PARAMETER_FLAG
+        SHIFT PARAMETER_FLAG
+        CTRL PARAMETER_FLAG
+        ALT PARAMETER_FLAG
+        // LOCK PARAMETER_FLAG
+
+        SWITCH {
+                BOARD
+                BACK
+                LOCK
+                CAPSSTATE
+                ADDTITLE | PARAMETER_MOD_MULTIPLE
+                        COLOR
+                OVERWRITE})
+                .method("setSwitch").group(BUTTON).allowAsLabel().allowAsDefault().labels({BUTTON}
+
+        BOARD keyword
+        BACK PARAMETER_FLAG
+        // LOCK PARAMETER_FLAG
+        CAPSSTATE PARAMETER_FLAG
+
+        ADDTITLE {
+                TEXT GETFIRST GETSECOND
+                SHOW
+                XOFFSET YOFFSET SIZE
+                BOLD NONBOLD ITALICS NONITALICS
+                COLOR })
+                .method("addTitle").allowAsLabel().allowAsDefault(
+        // TEXT text
+        SHOW keyword
+        GETFIRST PARAMETER_FLAG
+        GETSECOND PARAMETER_FLAG
+        XOFFSET int 
+        YOFFSET int 
+        SIZE int 
+        BOLD PARAMETER_FLAG ).group(BOLD
+        NONBOLD PARAMETER_FLAG_FALSE ).group(BOLD
+        ITALICS PARAMETER_FLAG ).group(ITALICS
+        NONITALICS PARAMETER_FLAG_FALSE ).group(ITALICS
+        // COLOR color
+
+        // COLOR color
+        ONSTAY PARAMETER_FLAG
+        ONCIRCLE PARAMETER_FLAG
+        OVERWRITE PARAMETER_FLAG
+
+        EXTEND {
+                ADDTITLE | PARAMETER_MOD_MULTIPLE
+
+                COLOR
+
+                SECOND
+                TODOUBLE
+                TOALTERNATE
+                TOMULTI
+                TOLIST
+                TOSTICKY
+                TOJOY
+
+                NORTH EAST SOUTH WEST
+                HEXR HEXDR HEXDL HEXL HEXUL HEXUR
+                CLOCK1 CLOCK2 CLOCK3 CLOCK4 CLOCK5 CLOCK6
+                CLOCK7 CLOCK8 CLOCK9 CLOCK10 CLOCK11 CLOCK12
+                REPEAT
+
+                ADD | PARAMETER_MOD_MULTIPLE
+                ADDTEXT | PARAMETER_MOD_MULTIPLE
+                ONSTAY
+                ONCIRCLE })
+                .method("extendButton").group(BUTTON).allowAsLabel().allowAsDefault(
+
+        TODOUBLE PARAMETER_FLAG 
+        TOALTERNATE PARAMETER_FLAG 
+        TOMULTI PARAMETER_FLAG 
+        TOLIST PARAMETER_FLAG 
+        TOSTICKY PARAMETER_FLAG 
+        TOJOY PARAMETER_FLAG 
+
+        ADDMODIFY {
+                ID ADDROLL ROLLS
+                IGNORESPACE }).method("addModify" 
+        // ID is already defined
+        // !! addRollHelper functionality should be avoided !!
+        // "Multiple" type parameters are needed
+        ADDROLL (string | PARAMETER_MOD_LIST)).method("addRollHelper"
+        ROLLS (string | PARAMETER_MOD_LIST)
+        IGNORESPACE PARAMETER_FLAG
+
+        ADDSHORTCUT {
+                ID PAIRS START }).method("addShortCut"
+        // ID is already defined
+        PAIRS (string | PARAMETER_MOD_LIST)
+        // START PARAMETER_FLAG
+
+        SHORTCUTSET {
+                ID SHORTCUTS START }).method("addShortCutSet"
+        // ID is already defined
+        SHORTCUTS (keyword | PARAMETER_MOD_LIST)
+        // START PARAMETER_FLAG
+
+        ADDVARIA {
+                ID
+                ADDGROUP | PARAMETER_MOD_MULTIPLE
+                KEEPCODE }).method("addVaria"
+        KEEPCODE PARAMETER_FLAG 
+        
+        ADDGROUP {
+                CODE
+                LEGENDS
+                LEGEND | PARAMETER_MOD_MULTIPLE }).method("addVariaGroup"
+        CODE text 
+        LEGENDS (string | PARAMETER_MOD_LIST)
+        LEGEND {
+                INDEX TEXT TITLE }).method("addVariaLegend"
+        // INDEX is already defined
+        // TEXT is already defined
+        TITLE text 
+
+
+        MONITOR {
+                LAYOUT
+                SIZE
+                BOLD NONBOLD ITALICS NONITALICS
+                COLOR })
+                .method("setMonitor").allowAsLabel().allowAsDefault(
+        // LAYOUT keyword
+        // SIZE int 
+        // BOLD BOLD PARAMETER_FLAG 
+        // NONBOLD BOLD PARAMETER_FLAG_FALSE 
+        // ITALICS ITALICS PARAMETER_FLAG 
+        // NONITALICS ITALICS PARAMETER_FLAG_FALSE 
+        // COLOR color
+
+        STOP MESSAGE_STOP 
+
+        
+    /**
+     ** Tokens of the predefined labels
+     **/
+
+    // public static final long ON = 0x38fL;
+    // public static final long OFF = 0x8292L;
+    public static final long TRUE = 0x17fecfL;
+    public static final long FALSE = 0x1b62527L;
+
+    // Hard-key mnemonics
+    public static final long KEYUNKNOWN = 0x96bb8b22835daL;
+    public static final long KEYSOFTLEFT = 0x15c91860fd50beeL;
+    public static final long KEYSOFTRIGHT = 0x326108604a556a5eL;
+    public static final long KEYHOME = 0xc304dfe9cL;
+    public static final long KEYBACK = 0xc30490f24L;
+    public static final long KEYCALL = 0xc3049d64fL;
+    public static final long KEYENDCALL = 0x96baf22792dbdL;
+    public static final long KEY0 = 0x10c50bL;
+    public static final long KEY1 = 0x10c50cL;
+    public static final long KEY2 = 0x10c50dL;
+    public static final long KEY3 = 0x10c50eL;
+    public static final long KEY4 = 0x10c50fL;
+    public static final long KEY5 = 0x10c510L;
+    public static final long KEY6 = 0x10c511L;
+    public static final long KEY7 = 0x10c512L;
+    public static final long KEY8 = 0x10c513L;
+    public static final long KEY9 = 0x10c514L;
+    public static final long KEYSTAR = 0xc30569829L;
+    public static final long KEYNUMBER = 0x412e6536be4eL;
+    public static final long KEYDPADUP = 0x412e3b497bebL;
+    public static final long KEYDPADDOWN = 0x15c903b06928cbcL;
+    public static final long KEYDPADLEFT = 0x15c903b069883bbL;
+    public static final long KEYDPADRIGHT = 0x3260d887f495baffL;
+    public static final long KEYDPADCENTR = 0x3260d887f2e5d495L;
+    public static final long KEYVOLUP = 0x1c2fcb226eeL;
+    public static final long KEYVOLDOWN = 0x96bb94f4d0fc7L;
+    public static final long KEYPOWER = 0x1c2fc06c9cdL;
+    public static final long KEYCAMERA = 0x412e3583b62eL;
+    public static final long KEYCLEAR = 0x1c2fa905323L;
+    public static final long KEYA = 0x10c515L;
+    public static final long KEYB = 0x10c516L;
+    public static final long KEYC = 0x10c517L;
+    public static final long KEYD = 0x10c518L;
+    public static final long KEYE = 0x10c519L;
+    public static final long KEYF = 0x10c51aL;
+    public static final long KEYG = 0x10c51bL;
+    public static final long KEYH = 0x10c51cL;
+    public static final long KEYI = 0x10c51dL;
+    public static final long KEYJ = 0x10c51eL;
+    public static final long KEYK = 0x10c51fL;
+    public static final long KEYL = 0x10c520L;
+    public static final long KEYM = 0x10c521L;
+    public static final long KEYN = 0x10c522L;
+    public static final long KEYO = 0x10c523L;
+    public static final long KEYP = 0x10c524L;
+    public static final long KEYQ = 0x10c525L;
+    public static final long KEYR = 0x10c526L;
+    public static final long KEYS = 0x10c527L;
+    public static final long KEYT = 0x10c528L;
+    public static final long KEYU = 0x10c529L;
+    public static final long KEYV = 0x10c52aL;
+    public static final long KEYW = 0x10c52bL;
+    public static final long KEYX = 0x10c52cL;
+    public static final long KEYY = 0x10c52dL;
+    public static final long KEYZ = 0x10c52eL;
+    public static final long KEYCOMMA = 0x1c2fa92d12dL;
+    public static final long KEYPERIOD = 0x412e6bb5690cL;
+    public static final long KEYALTLEFT = 0x96bacb84e0d52L;
+    public static final long KEYALTRIGHT = 0x15c8ff6a3d29dd2L;
+    public static final long KEYSHLEFT = 0x412e786cca8fL;
+    public static final long KEYSHRIGHT = 0x96bb76843f7a3L;
+    public static final long KEYTAB = 0x545659bdL;
+    public static final long KEYSPACE = 0x1c2fc5ce480L;
+    public static final long KEYSYM = 0x545657e7L;
+    public static final long KEYEXPLORER = 0x15c9056274ff808L;
+    public static final long KEYENVELOPE = 0x15c90504607427dL;
+    public static final long KEYENTER = 0x1c2facb618aL;
+    public static final long KEYDEL = 0x545604cbL;
+    public static final long KEYGRAVE = 0x1c2fb0747adL;
+    public static final long KEYMINUS = 0x1c2fbac2dfcL;
+    public static final long KEYEQUAL = 0x1c2facdb7e0L;
+    public static final long KEYLBRACKET = 0x15c90e3c28949a3L;
+    public static final long KEYRBRACKET = 0x15c916860d237f1L;
+    public static final long KEYBACKSLASH = 0x3260d0da179a8adcL;
+    public static final long KEYSEMICOLON = 0x3261078741e84efdL;
+    public static final long KEYAPOSTROPH = 0x3260cefb1f92b260L;
+    public static final long KEYSLASH = 0x1c2fc59cf5fL;
+    public static final long KEYAT = 0x2487c4aL;
+    public static final long KEYNUM = 0x54563c96L;
+    public static final long KEYHOOK = 0xc304dfeecL;
+    public static final long KEYFOCUS = 0x1c2fae867c0L;
+    public static final long KEYPLUS = 0xc30541eafL;
+    public static final long KEYMENU = 0xc3051a6a8L;
+    public static final long KEYNOTIFY = 0x412e6490b74eL;
+    public static final long KEYSEARCH = 0x412e780ec447L;
+    public static final long KEYPLAYPAUSE = 0x3260fe85a2b1c86cL;
+    public static final long KEYSTOP = 0xc30569a2dL;
+    public static final long KEYNEXT = 0xc30526df6L;
+    public static final long KEYPREV = 0xc30543c78L;
+    public static final long KEYREWIND = 0x412e73fd7be2L;
+    public static final long KEYFFORWARD = 0x15c90617d86f796L;
+    public static final long KEYMUTE = 0xc3051fd06L;
+    public static final long KEYPAGEUP = 0x412e6b3a704fL;
+    public static final long KEYPAGEDOWN = 0x15c913b661d7780L;
+    public static final long KEYPICTSYM = 0x96bb59ff83d17L;
+    public static final long KEYCHARSET = 0x96badd786f794L;
+    public static final long KEYBUTTONA = 0x96bad7675450fL;
+    public static final long KEYBUTTONB = 0x96bad76754510L;
+    public static final long KEYBUTTONC = 0x96bad76754511L;
+    public static final long KEYBUTTONX = 0x96bad76754526L;
+    public static final long KEYBUTTONY = 0x96bad76754527L;
+    public static final long KEYBUTTONZ = 0x96bad76754528L;
+    public static final long KEYBUTTONL1 = 0x15c90121ecefce7L;
+    public static final long KEYBUTTONR1 = 0x15c90121ecefdc5L;
+    public static final long KEYBUTTONL2 = 0x15c90121ecefce8L;
+    public static final long KEYBUTTONR2 = 0x15c90121ecefdc6L;
+    public static final long KEYBUTTHUMBL = 0x3260d29e7303cedbL;
+    public static final long KEYBUTTHUMBR = 0x3260d29e7303cee1L;
+    public static final long KEYBUTSTART = 0x15c90121eb5fcbcL;
+    public static final long KEYBUTSELECT = 0x3260d29e6e84c9d3L;
+    public static final long KEYBUTMODE = 0x96bad766fda96L;
+    public static final long KEYESC = 0x54560c21L;
+    public static final long KEYFWDEL = 0x1c2faee99aaL;
+    public static final long KEYCTRLLEFT = 0x15c90279717197fL;
+    public static final long KEYCTRLRIGHT = 0x3260d5b8d6e16053L;
+    public static final long KEYCAPSLOCK = 0x15c901c35f39883L;
+    public static final long KEYSCROLLOCK = 0x3261075e239676fcL;
+    public static final long KEYMETALEFT = 0x15c90fbafff7389L;
+    public static final long KEYMETARIGHT = 0x3260f460707663c5L;
+    public static final long KEYFUNCTION = 0x15c906a6da5eb35L;
+    public static final long KEYSYSRQ = 0x1c2fc643bbeL;
+    public static final long KEYBREAK = 0x1c2fa785d59L;
+    public static final long KEYMOVEHOME = 0x15c9101b1fdf3cbL;
+    public static final long KEYMOVEEND = 0x96bb3f00eb12cL;
+    public static final long KEYINS = 0x545620dcL;
+    public static final long KEYFORWARD = 0x96bafc128fca3L;
+    public static final long KEYPLAY = 0xc30541bd1L;
+    public static final long KEYPAUSE = 0x1c2fbfbeefeL;
+    public static final long KEYCLOSE = 0x1c2fa908b2aL;
+    public static final long KEYEJECT = 0x1c2fac7f997L;
+    public static final long KEYREC = 0x54564fa0L;
+    public static final long KEYF1 = 0x2487ce7L;
+    public static final long KEYF2 = 0x2487ce8L;
+    public static final long KEYF3 = 0x2487ce9L;
+    public static final long KEYF4 = 0x2487ceaL;
+    public static final long KEYF5 = 0x2487cebL;
+    public static final long KEYF6 = 0x2487cecL;
+    public static final long KEYF7 = 0x2487cedL;
+    public static final long KEYF8 = 0x2487ceeL;
+    public static final long KEYF9 = 0x2487cefL;
+    public static final long KEYF10 = 0x54560d87L;
+    public static final long KEYF11 = 0x54560d88L;
+    public static final long KEYF12 = 0x54560d89L;
+    public static final long KEYNUMLOCK = 0x96bb4a0cd6f6fL;
+    public static final long KEYNUM0 = 0xc3052c1d2L;
+    public static final long KEYNUM1 = 0xc3052c1d3L;
+    public static final long KEYNUM2 = 0xc3052c1d4L;
+    public static final long KEYNUM3 = 0xc3052c1d5L;
+    public static final long KEYNUM4 = 0xc3052c1d6L;
+    public static final long KEYNUM5 = 0xc3052c1d7L;
+    public static final long KEYNUM6 = 0xc3052c1d8L;
+    public static final long KEYNUM7 = 0xc3052c1d9L;
+    public static final long KEYNUM8 = 0xc3052c1daL;
+    public static final long KEYNUM9 = 0xc3052c1dbL;
+    public static final long KEYNUMDIV = 0x412e6536c998L;
+    public static final long KEYNUMSTAR = 0x96bb4a0d2f2f4L;
+    public static final long KEYNUMMINUS = 0x15c911b3da54d53L;
+    public static final long KEYNUMPLUS = 0x96bb4a0d0797aL;
+    public static final long KEYNUMPERIOD = 0x3260f8eff4b6f09fL;
+    public static final long KEYNUMCOMMA = 0x15c911b3c8bf084L;
+    public static final long KEYNUMENTER = 0x15c911b3cc480e1L;
+    public static final long KEYNUMEQUAL = 0x15c911b3cc6d737L;
+    public static final long KEYNUMLPAR = 0x96bb4a0cd7485L;
+    public static final long KEYNUMRPAR = 0x96bb4a0d217b3L;
+    public static final long KEYVOLMUTE = 0x96bb94f54242aL;
+    public static final long KEYINFO = 0xc304ebe27L;
+    public static final long KEYCHUP = 0xc3049fd0fL;
+    public static final long KEYCHDOWN = 0x412e36452640L;
+    public static final long KEYZOOMIN = 0x412e962631c1L;
+    public static final long KEYZOOMOUT = 0x96bbbb361523fL;
+    public static final long KEYTV = 0x2487f0bL;
+    public static final long KEYWIN = 0x54566afcL;
+    public static final long KEYGUIDE = 0x1c2fb09c172L;
+    public static final long KEYDVR = 0x54560746L;
+    public static final long KEYBOOKMARK = 0x15c900e738e0141L;
+    public static final long KEYCAPTIONS = 0x15c901c360de17cL;
+    public static final long KEYSETTINGS = 0x15c918050659a68L;
+    public static final long KEYTVPOWER = 0x96bb83adb167dL;
+    public static final long KEYTVINPUT = 0x96bb83a11feecL;
+    public static final long KEYSTBPOWER = 0x15c9188fb825275L;
+    public static final long KEYSTBINPUT = 0x15c9188fab93ae4L;
+    public static final long KEYAVRPOWER = 0x15c8ffc94a4f66dL;
+    public static final long KEYAVRINPUT = 0x15c8ffc93dbdedcL;
+    public static final long KEYPRGRED = 0x412e6d20db79L;
+    public static final long KEYPRGGREEN = 0x15c91458e2d30bdL;
+    public static final long KEYPRGYELLOW = 0x3260ff0dd55bb8f1L;
+    public static final long KEYPRGBLUE = 0x96bb5c58f82c3L;
+    public static final long KEYAPPSWITCH = 0x3260cefbb8cf8213L;
+    public static final long KEYBUTTON1 = 0x96bad76754506L;
+    public static final long KEYBUTTON2 = 0x96bad76754507L;
+    public static final long KEYBUTTON3 = 0x96bad76754508L;
+    public static final long KEYBUTTON4 = 0x96bad76754509L;
+    public static final long KEYBUTTON5 = 0x96bad7675450aL;
+    public static final long KEYBUTTON6 = 0x96bad7675450bL;
+    public static final long KEYBUTTON7 = 0x96bad7675450cL;
+    public static final long KEYBUTTON8 = 0x96bad7675450dL;
+    public static final long KEYBUTTON9 = 0x96bad7675450eL;
+    public static final long KEYBUTTON10 = 0x15c90121ecefa02L;
+    public static final long KEYBUTTON11 = 0x15c90121ecefa03L;
+    public static final long KEYBUTTON12 = 0x15c90121ecefa04L;
+    public static final long KEYBUTTON13 = 0x15c90121ecefa05L;
+    public static final long KEYBUTTON14 = 0x15c90121ecefa06L;
+    public static final long KEYBUTTON15 = 0x15c90121ecefa07L;
+    public static final long KEYBUTTON16 = 0x15c90121ecefa08L;
+    public static final long KEYLANGUAGE = 0x15c90e319cc4777L;
+    public static final long KEYMANNER = 0x412e5ed9b6aeL;
+    public static final long KEY3D = 0x2487b37L;
+    public static final long KEYCONTACTS = 0x15c90248ac5889aL;
+    public static final long KEYCALENDAR = 0x15c901c23dc20a5L;
+    public static final long KEYMUSIC = 0x1c2fbb58d49L;
+    public static final long KEYCALC = 0xc3049d646L;
+    public static final long KEYKAKU = 0xc3050051bL;
+    public static final long KEYEISU = 0xc304b8dddL;
+    public static final long KEYMUHENKAN = 0x15c91050db84cf2L;
+    public static final long KEYHENKAN = 0x412e4aa183a6L;
+    public static final long KEYSWKANA = 0x412e7a18e682L;
+    public static final long KEYYEN = 0x5456751aL;
+    public static final long KEYRO = 0x2487ebaL;
+    public static final long KEYKANA = 0xc30500576L;
+    public static final long KEYASSIST = 0x412e2f46fa40L;
+    public static final long KEYBRGDOWN = 0x96bad688ed3ddL;
+    public static final long KEYBRGUP = 0x1c2fa786af4L;
+    public static final long KEYMATRACE = 0x96bb3b601fce3L;
+    public static final long KEYSLEEP = 0x1c2fc59e2c5L;
+    public static final long KEYWAKE = 0xc30594b67L;
+    public static final long KEYPAIR = 0xc3053e21fL;
+    public static final long KEYMEDIATOP = 0x15c90fb6eba5ec2L;
+    public static final long KEY11 = 0x2487ae1L;
+    public static final long KEY12 = 0x2487ae2L;
+    public static final long KEYCHLAST = 0x412e364b09bcL;
+    public static final long KEYTVDATA = 0x412e7e190039L;
+    public static final long KEYVOICEASST = 0x326111f73da6cbd5L;
+    public static final long KEYTVRADIO = 0x96bb83b09113fL;
+    public static final long KEYTVTEXT = 0x412e7e257414L;
+    public static final long KEYTVNUMENT = 0x15c91a079e5e518L;
+    public static final long KEYTVTERRANA = 0x32610c34f2207697L;
+    public static final long KEYTVTERRDIA = 0x32610c34f22085e9L;
+    public static final long KEYTVSAT = 0x1c2fc7e80a6L;
+    public static final long KEYTVSATBS = 0x96bb83b25fec1L;
+    public static final long KEYTVSATCS = 0x96bb83b25fee6L;
+    public static final long KEYTVSATSERV = 0x32610c3448e43846L;
+    public static final long KEYTVNETWORK = 0x32610c315cca8c90L;
+    public static final long KEYTVANTCABL = 0x32610c29bdd95167L;
+    public static final long KEYTVHDMI1 = 0x96bb839ed9976L;
+    public static final long KEYTVHDMI2 = 0x96bb839ed9977L;
+    public static final long KEYTVHDMI3 = 0x96bb839ed9978L;
+    public static final long KEYTVHDMI4 = 0x96bb839ed9979L;
+    public static final long KEYTVCMPSIT1 = 0x32610c2aeb2d1f7eL;
+    public static final long KEYTVCMPSIT2 = 0x32610c2aeb2d1f7fL;
+    public static final long KEYTVCOMP1 = 0x96bb839671e43L;
+    public static final long KEYTVCOMP2 = 0x96bb839671e44L;
+    public static final long KEYTVVGA1 = 0x412e7e270711L;
+    public static final long KEYTVAUMIX = 0x96bb839328eacL;
+    public static final long KEYTVAUMIXUP = 0x32610c29da04ff93L;
+    public static final long KEYTVAUMIXDN = 0x32610c29da04fd1cL;
+    public static final long KEYTVZOOMMOD = 0x32610c38b0af5fcfL;
+    public static final long KEYTVCONTMNU = 0x32610c2af338fdc6L;
+    public static final long KEYTVMEDCNTX = 0x32610c30c203a271L;
+    public static final long KEYTVTIMER = 0x96bb83b48a199L;
+    public static final long KEYHELP = 0xc304dc908L;
+
+
+    /**
+     ** Values of the predefined labels
+     **/
+
+    /**
+     * Creates a new Labels class which can be filled with default values.
+     * Called by SoftBoardParser.parseSoftBoard()
+     * @return the new Labels class
+     */
+    public static Labels createLabels()
+        {
+        Labels labels = new Labels(
+
+        labels. ON -1L 
+        labels. OFF 0L 
+        labels. TRUE -1L 
+        labels. FALSE 0 
+
+        // Hard-key labels
+        labels. KEYUNKNOWN 0x10000L + 0L 
+        labels. KEYSOFTLEFT 0x10000L + 1L 
+        labels. KEYSOFTRIGHT 0x10000L + 2L 
+        labels. KEYHOME 0x10000L + 3L 
+        labels. KEYBACK 0x10000L + 4L 
+        labels. KEYCALL 0x10000L + 5L 
+        labels. KEYENDCALL 0x10000L + 6L 
+        labels. KEY0 0x10000L + 7L 
+        labels. KEY1 0x10000L + 8L 
+        labels. KEY2 0x10000L + 9L 
+        labels. KEY3 0x10000L + 10L 
+        labels. KEY4 0x10000L + 11L 
+        labels. KEY5 0x10000L + 12L 
+        labels. KEY6 0x10000L + 13L 
+        labels. KEY7 0x10000L + 14L 
+        labels. KEY8 0x10000L + 15L 
+        labels. KEY9 0x10000L + 16L 
+        labels. KEYSTAR 0x10000L + 17L 
+        labels. KEYNUMBER 0x10000L + 18L 
+        labels. KEYDPADUP 0x10000L + 19L 
+        labels. KEYDPADDOWN 0x10000L + 20L 
+        labels. KEYDPADLEFT 0x10000L + 21L 
+        labels. KEYDPADRIGHT 0x10000L + 22L 
+        labels. KEYDPADCENTR 0x10000L + 23L 
+        labels. KEYVOLUP 0x10000L + 24L 
+        labels. KEYVOLDOWN 0x10000L + 25L 
+        labels. KEYPOWER 0x10000L + 26L 
+        labels. KEYCAMERA 0x10000L + 27L 
+        labels. KEYCLEAR 0x10000L + 28L 
+        labels. KEYA 0x10000L + 29L 
+        labels. KEYB 0x10000L + 30L 
+        labels. KEYC 0x10000L + 31L 
+        labels. KEYD 0x10000L + 32L 
+        labels. KEYE 0x10000L + 33L 
+        labels. KEYF 0x10000L + 34L 
+        labels. KEYG 0x10000L + 35L 
+        labels. KEYH 0x10000L + 36L 
+        labels. KEYI 0x10000L + 37L 
+        labels. KEYJ 0x10000L + 38L 
+        labels. KEYK 0x10000L + 39L 
+        labels. KEYL 0x10000L + 40L 
+        labels. KEYM 0x10000L + 41L 
+        labels. KEYN 0x10000L + 42L 
+        labels. KEYO 0x10000L + 43L 
+        labels. KEYP 0x10000L + 44L 
+        labels. KEYQ 0x10000L + 45L 
+        labels. KEYR 0x10000L + 46L 
+        labels. KEYS 0x10000L + 47L 
+        labels. KEYT 0x10000L + 48L 
+        labels. KEYU 0x10000L + 49L 
+        labels. KEYV 0x10000L + 50L 
+        labels. KEYW 0x10000L + 51L 
+        labels. KEYX 0x10000L + 52L 
+        labels. KEYY 0x10000L + 53L 
+        labels. KEYZ 0x10000L + 54L 
+        labels. KEYCOMMA 0x10000L + 55L 
+        labels. KEYPERIOD 0x10000L + 56L 
+        labels. KEYALTLEFT 0x10000L + 57L 
+        labels. KEYALTRIGHT 0x10000L + 58L 
+        labels. KEYSHLEFT 0x10000L + 59L 
+        labels. KEYSHRIGHT 0x10000L + 60L 
+        labels. KEYTAB 0x10000L + 61L 
+        labels. KEYSPACE 0x10000L + 62L 
+        labels. KEYSYM 0x10000L + 63L 
+        labels. KEYEXPLORER 0x10000L + 64L 
+        labels. KEYENVELOPE 0x10000L + 65L 
+        labels. KEYENTER 0x10000L + 66L 
+        labels. KEYDEL 0x10000L + 67L 
+        labels. KEYGRAVE 0x10000L + 68L 
+        labels. KEYMINUS 0x10000L + 69L 
+        labels. KEYEQUAL 0x10000L + 70L 
+        labels. KEYLBRACKET 0x10000L + 71L 
+        labels. KEYRBRACKET 0x10000L + 72L 
+        labels. KEYBACKSLASH 0x10000L + 73L 
+        labels. KEYSEMICOLON 0x10000L + 74L 
+        labels. KEYAPOSTROPH 0x10000L + 75L 
+        labels. KEYSLASH 0x10000L + 76L 
+        labels. KEYAT 0x10000L + 77L 
+        labels. KEYNUM 0x10000L + 78L 
+        labels. KEYHOOK 0x10000L + 79L 
+        labels. KEYFOCUS 0x10000L + 80L 
+        labels. KEYPLUS 0x10000L + 81L 
+        labels. KEYMENU 0x10000L + 82L 
+        labels. KEYNOTIFY 0x10000L + 83L 
+        labels. KEYSEARCH 0x10000L + 84L 
+        labels. KEYPLAYPAUSE 0x10000L + 85L 
+        labels. KEYSTOP 0x10000L + 86L 
+        labels. KEYNEXT 0x10000L + 87L 
+        labels. KEYPREV 0x10000L + 88L 
+        labels. KEYREWIND 0x10000L + 89L 
+        labels. KEYFFORWARD 0x10000L + 90L 
+        labels. KEYMUTE 0x10000L + 91L 
+        labels. KEYPAGEUP 0x10000L + 92L 
+        labels. KEYPAGEDOWN 0x10000L + 93L 
+        labels. KEYPICTSYM 0x10000L + 94L 
+        labels. KEYCHARSET 0x10000L + 95L 
+        labels. KEYBUTTONA 0x10000L + 96L 
+        labels. KEYBUTTONB 0x10000L + 97L 
+        labels. KEYBUTTONC 0x10000L + 98L 
+        labels. KEYBUTTONX 0x10000L + 99L 
+        labels. KEYBUTTONY 0x10000L + 100L 
+        labels. KEYBUTTONZ 0x10000L + 101L 
+        labels. KEYBUTTONL1 0x10000L + 102L 
+        labels. KEYBUTTONR1 0x10000L + 103L 
+        labels. KEYBUTTONL2 0x10000L + 104L 
+        labels. KEYBUTTONR2 0x10000L + 105L 
+        labels. KEYBUTTHUMBL 0x10000L + 106L 
+        labels. KEYBUTTHUMBR 0x10000L + 107L 
+        labels. KEYBUTSTART 0x10000L + 108L 
+        labels. KEYBUTSELECT 0x10000L + 109L 
+        labels. KEYBUTMODE 0x10000L + 110L 
+        labels. KEYESC 0x10000L + 111L 
+        labels. KEYFWDEL 0x10000L + 112L 
+        labels. KEYCTRLLEFT 0x10000L + 113L 
+        labels. KEYCTRLRIGHT 0x10000L + 114L 
+        labels. KEYCAPSLOCK 0x10000L + 115L 
+        labels. KEYSCROLLOCK 0x10000L + 116L 
+        labels. KEYMETALEFT 0x10000L + 117L 
+        labels. KEYMETARIGHT 0x10000L + 118L 
+        labels. KEYFUNCTION 0x10000L + 119L 
+        labels. KEYSYSRQ 0x10000L + 120L 
+        labels. KEYBREAK 0x10000L + 121L 
+        labels. KEYMOVEHOME 0x10000L + 122L 
+        labels. KEYMOVEEND 0x10000L + 123L 
+        labels. KEYINS 0x10000L + 124L 
+        labels. KEYFORWARD 0x10000L + 125L 
+        labels. KEYPLAY 0x10000L + 126L 
+        labels. KEYPAUSE 0x10000L + 127L 
+        labels. KEYCLOSE 0x10000L + 128L 
+        labels. KEYEJECT 0x10000L + 129L 
+        labels. KEYREC 0x10000L + 130L 
+        labels. KEYF1 0x10000L + 131L 
+        labels. KEYF2 0x10000L + 132L 
+        labels. KEYF3 0x10000L + 133L 
+        labels. KEYF4 0x10000L + 134L 
+        labels. KEYF5 0x10000L + 135L 
+        labels. KEYF6 0x10000L + 136L 
+        labels. KEYF7 0x10000L + 137L 
+        labels. KEYF8 0x10000L + 138L 
+        labels. KEYF9 0x10000L + 139L 
+        labels. KEYF10 0x10000L + 140L 
+        labels. KEYF11 0x10000L + 141L 
+        labels. KEYF12 0x10000L + 142L 
+        labels. KEYNUMLOCK 0x10000L + 143L 
+        labels. KEYNUM0 0x10000L + 144L 
+        labels. KEYNUM1 0x10000L + 145L 
+        labels. KEYNUM2 0x10000L + 146L 
+        labels. KEYNUM3 0x10000L + 147L 
+        labels. KEYNUM4 0x10000L + 148L 
+        labels. KEYNUM5 0x10000L + 149L 
+        labels. KEYNUM6 0x10000L + 150L 
+        labels. KEYNUM7 0x10000L + 151L 
+        labels. KEYNUM8 0x10000L + 152L 
+        labels. KEYNUM9 0x10000L + 153L 
+        labels. KEYNUMDIV 0x10000L + 154L 
+        labels. KEYNUMSTAR 0x10000L + 155L 
+        labels. KEYNUMMINUS 0x10000L + 156L 
+        labels. KEYNUMPLUS 0x10000L + 157L 
+        labels. KEYNUMPERIOD 0x10000L + 158L 
+        labels. KEYNUMCOMMA 0x10000L + 159L 
+        labels. KEYNUMENTER 0x10000L + 160L 
+        labels. KEYNUMEQUAL 0x10000L + 161L 
+        labels. KEYNUMLPAR 0x10000L + 162L 
+        labels. KEYNUMRPAR 0x10000L + 163L 
+        labels. KEYVOLMUTE 0x10000L + 164L 
+        labels. KEYINFO 0x10000L + 165L 
+        labels. KEYCHUP 0x10000L + 166L 
+        labels. KEYCHDOWN 0x10000L + 167L 
+        labels. KEYZOOMIN 0x10000L + 168L 
+        labels. KEYZOOMOUT 0x10000L + 169L 
+        labels. KEYTV 0x10000L + 170L 
+        labels. KEYWIN 0x10000L + 171L 
+        labels. KEYGUIDE 0x10000L + 172L 
+        labels. KEYDVR 0x10000L + 173L 
+        labels. KEYBOOKMARK 0x10000L + 174L 
+        labels. KEYCAPTIONS 0x10000L + 175L 
+        labels. KEYSETTINGS 0x10000L + 176L 
+        labels. KEYTVPOWER 0x10000L + 177L 
+        labels. KEYTVINPUT 0x10000L + 178L 
+        labels. KEYSTBPOWER 0x10000L + 179L 
+        labels. KEYSTBINPUT 0x10000L + 180L 
+        labels. KEYAVRPOWER 0x10000L + 181L 
+        labels. KEYAVRINPUT 0x10000L + 182L 
+        labels. KEYPRGRED 0x10000L + 183L 
+        labels. KEYPRGGREEN 0x10000L + 184L 
+        labels. KEYPRGYELLOW 0x10000L + 185L 
+        labels. KEYPRGBLUE 0x10000L + 186L 
+        labels. KEYAPPSWITCH 0x10000L + 187L 
+        labels. KEYBUTTON1 0x10000L + 188L 
+        labels. KEYBUTTON2 0x10000L + 189L 
+        labels. KEYBUTTON3 0x10000L + 190L 
+        labels. KEYBUTTON4 0x10000L + 191L 
+        labels. KEYBUTTON5 0x10000L + 192L 
+        labels. KEYBUTTON6 0x10000L + 193L 
+        labels. KEYBUTTON7 0x10000L + 194L 
+        labels. KEYBUTTON8 0x10000L + 195L 
+        labels. KEYBUTTON9 0x10000L + 196L 
+        labels. KEYBUTTON10 0x10000L + 197L 
+        labels. KEYBUTTON11 0x10000L + 198L 
+        labels. KEYBUTTON12 0x10000L + 199L 
+        labels. KEYBUTTON13 0x10000L + 200L 
+        labels. KEYBUTTON14 0x10000L + 201L 
+        labels. KEYBUTTON15 0x10000L + 202L 
+        labels. KEYBUTTON16 0x10000L + 203L 
+        labels. KEYLANGUAGE 0x10000L + 204L 
+        labels. KEYMANNER 0x10000L + 205L 
+        labels. KEY3D 0x10000L + 206L 
+        labels. KEYCONTACTS 0x10000L + 207L 
+        labels. KEYCALENDAR 0x10000L + 208L 
+        labels. KEYMUSIC 0x10000L + 209L 
+        labels. KEYCALC 0x10000L + 210L 
+        labels. KEYKAKU 0x10000L + 211L 
+        labels. KEYEISU 0x10000L + 212L 
+        labels. KEYMUHENKAN 0x10000L + 213L 
+        labels. KEYHENKAN 0x10000L + 214L 
+        labels. KEYSWKANA 0x10000L + 215L 
+        labels. KEYYEN 0x10000L + 216L 
+        labels. KEYRO 0x10000L + 217L 
+        labels. KEYKANA 0x10000L + 218L 
+        labels. KEYASSIST 0x10000L + 219L 
+        labels. KEYBRGDOWN 0x10000L + 220L 
+        labels. KEYBRGUP 0x10000L + 221L 
+        labels. KEYMATRACE 0x10000L + 222L 
+        labels. KEYSLEEP 0x10000L + 223L 
+        labels. KEYWAKE 0x10000L + 224L 
+        labels. KEYPAIR 0x10000L + 225L 
+        labels. KEYMEDIATOP 0x10000L + 226L 
+        labels. KEY11 0x10000L + 227L 
+        labels. KEY12 0x10000L + 228L 
+        labels. KEYCHLAST 0x10000L + 229L 
+        labels. KEYTVDATA 0x10000L + 230L 
+        labels. KEYVOICEASST 0x10000L + 231L 
+        labels. KEYTVRADIO 0x10000L + 232L 
+        labels. KEYTVTEXT 0x10000L + 233L 
+        labels. KEYTVNUMENT 0x10000L + 234L 
+        labels. KEYTVTERRANA 0x10000L + 235L 
+        labels. KEYTVTERRDIA 0x10000L + 236L 
+        labels. KEYTVSAT 0x10000L + 237L 
+        labels. KEYTVSATBS 0x10000L + 238L 
+        labels. KEYTVSATCS 0x10000L + 239L 
+        labels. KEYTVSATSERV 0x10000L + 240L 
+        labels. KEYTVNETWORK 0x10000L + 241L 
+        labels. KEYTVANTCABL 0x10000L + 242L 
+        labels. KEYTVHDMI1 0x10000L + 243L 
+        labels. KEYTVHDMI2 0x10000L + 244L 
+        labels. KEYTVHDMI3 0x10000L + 245L 
+        labels. KEYTVHDMI4 0x10000L + 246L 
+        labels. KEYTVCMPSIT1 0x10000L + 247L 
+        labels. KEYTVCMPSIT2 0x10000L + 248L 
+        labels. KEYTVCOMP1 0x10000L + 249L 
+        labels. KEYTVCOMP2 0x10000L + 250L 
+        labels. KEYTVVGA1 0x10000L + 251L 
+        labels. KEYTVAUMIX 0x10000L + 252L 
+        labels. KEYTVAUMIXUP 0x10000L + 253L 
+        labels. KEYTVAUMIXDN 0x10000L + 254L 
+        labels. KEYTVZOOMMOD 0x10000L + 255L 
+        labels. KEYTVCONTMNU 0x10000L + 256L 
+        labels. KEYTVMEDCNTX 0x10000L + 257L 
+        labels. KEYTVTIMER 0x10000L + 258L 
+        labels. KEYHELP 0x10000L + 259L 
+
+        return labels;
+        }
+
+
+    /**
+     * Commands's data consists of:
+     * long groupCode - parameter is stored under groupCode
+     * (Single params: only one parameter is allowed under one groupCode
+     *  Multiple params: all parameters are listed together under the same groupCode)
+     * long parameters[] - allowed parameters (token-codes of allowed parameter-commands) or
+     * special parameters as negative values.
+     * Array cannot be null or empty; at least one item is needed!
+     * NO_PARAMETERS value means: no parameter needed
+     * Method method - method of SoftBoardData which should be called
+     * (method can be null: no method is called)
+     */
+    public static class Data
+        {
+        private long tokenCode;
+        private long allowedLabelTypes[] = null;
+
+        private long groupCode;
+        private long params[];
+        private Method method = null;
+        private boolean allowedAsLabel = false;
+        private boolean allowedAsDefault = false;
+
+        private Data( long tokenCode long[] params )
+            {
+            this.tokenCode = tokenCode;
+            this.groupCode = tokenCode;
+            this.params = params;
+            }
+
+        private Data group( long groupCode )
+            {
+            this.groupCode = groupCode;
+            return this;
+            }
+
+        private Data method( String methodName )
+            {
+            // Different types of methods should be called - according to parameter type
+            // Check SoftBoardParser.parseComplexParameter third part!
+            // ?? Some kind of is...Type() or getMainType() methods could be helpful ??
+
+            try
+                {
+                // Parameter-command has COMPLEX parameters - forwardParameters
+                if (getParameterType() >= Tokenizer.CODE_SHIFT || getParameterType() < 0x0L )
+                    method = MethodsForCommands.class.getDeclaredMethod(methodName ExtendedMap.class
+                // Parameter-command has ONE parameter - result
+                else if (getParameterType() <= Commands.keyword)
+                    method = MethodsForCommands.class.getDeclaredMethod(methodName Object.class
+                // Parameter-command has LIST parameter - result
+                else if (getParameterType() <= (Commands.keyword | Commands.PARAMETER_MOD_LIST))
+                    method = MethodsForCommands.class.getDeclaredMethod(methodName List.class
+                // Parameter command is a FLAG etc. or NO parameters
+                else if (getParameterType() <= Commands.SYSTEM_PARAMETERS || getParameterType() == NO_PARAMETERS )
+                    method = MethodsForCommands.class.getDeclaredMethod(methodName
+                // Parameter-command is a "system" parameter
+                else
+                    method = null;
+                }
+            catch (NoSuchMethodException e)
+                {
+                method = null;
+                Scribe.error("Method " + methodName + " is missing in MethodsForCommands!"
+                }
+
+            return this;
+            }
+
+        private Data allowAsLabel()
+            {
+            allowedAsLabel = true;
+            return this;
+            }
+
+        private Data allowAsDefault()
+            {
+            allowedAsDefault = true;
+            return this;
+            }
+
+        private Data labels( long[] allowedLabelTypes ) // extendAllowedLabelTypes
+            {
+            this.allowedLabelTypes = allowedLabelTypes;
+            return this;
+            }
+
+        /**
+         * First allowed parameter determines the type of the parameter list
+         * The first allowed parameter cannot be null!
+         * NO_PARAMETERS is needed if there are no allowed parameters
+         * @return type of parameter-list
+         */
+        public long getParameterType()
+            {
+            return params[0];
+            // !! Size check could be performed
+            // and return NO_PARAMETERS in case of empty/missing params array !!
+            }
+
+        /**
+         * Allowed parameters for the parameter-list
+         * @return allowed parameters
+         */
+        public long[] getAllowedParameters()
+            {
+            return params;
+            }
+
+        /**
+         * If this command will call a method in SoftBoardData class after getting parameter-list
+         * @return true if method is supplied
+         */
+        public boolean hasMethodToCall()
+            {
+            return method != null;
+            }
+
+        /**
+         * Get the method to call in SoftBoardData class.
+         * Parameters are forwarded as a Map to the method.
+         * @return the method to call
+         */
+        public Method getMethod()
+            {
+            return method;
+            }
+
+        /**
+         * Commands are stored under group-code in the complex parameters.
+         * @return group code
+         */
+        public long getGroupCode()
+            {
+            return groupCode;
+            }
+
+        public boolean isAllowedAsLabel()
+            {
+            return allowedAsLabel;
+            }
+
+        public boolean isAllowedAsDefault()
+            {
+            return allowedAsDefault;
+            }
+
+        public boolean isLabelTypeAllowed( long labelType )
+            {
+            if ( labelType == tokenCode )
+                return true;
+            if ( allowedLabelTypes == null )
+                return false;
+            return ArrayUtils.contains( allowedLabelTypes labelType 
+            }
+        }
+
+    }

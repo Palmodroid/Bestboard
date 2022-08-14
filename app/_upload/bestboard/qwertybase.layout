@@ -1,0 +1,52 @@
+COAT ( 1000 )
+
+ADDLAYOUT ( ID qwertybase START) 
+
+DEFAULT ( BUTTON ( COLOR 0nAZURE ))
+INCLUDE ("qwerty.ext")
+BLOCK ( ROW 2 COLUMN 3
+	qwerty 
+	)
+
+DEFAULT ( BUTTON ( 
+	ADDTITLE ( YOFFSET 250 ) 
+	ADDTITLE ( SIZE 800 YOFFSET -550 GETSECOND )
+	COLOR 0nCYAN 
+	ONSTAY )) 	
+DEFAULT ( EXTEND ( ONSTAY ))
+
+INCLUDE ("num10.ext")
+BLOCK ( ROW 1 COLUMN 2
+	num10
+HOME
+	EXTEND ( SECOND (TEXT ("!")) )
+	EXTEND ( SECOND (TEXT ("@")) )
+	EXTEND ( SECOND (TEXT ("#")) )
+	EXTEND ( SECOND (TEXT ("\$")) )
+	EXTEND ( SECOND (TEXT ("%")) )
+	EXTEND ( SECOND (TEXT ("^")) )
+	EXTEND ( SECOND (TEXT ("&")) )
+	EXTEND ( SECOND (TEXT ("*")) )
+	EXTEND ( SECOND (TEXT ("(")) )
+	EXTEND ( SECOND (TEXT (")")) )
+	)
+
+BLOCK ( ROW 1 COLUMN 1
+	BUTTON ( TEXT ("`") SECOND (TEXT ("~")) )
+SKIP 10
+	BUTTON ( TEXT ("-") SECOND (TEXT ("_")) )
+	BUTTON ( TEXT ("=") SECOND (TEXT ("+")) )
+DL
+	BUTTON ( TEXT ("[") SECOND (TEXT ("{")) )
+	BUTTON ( TEXT ("}") SECOND (TEXT ("}")) )
+	BUTTON ( TEXT ("\\") SECOND (TEXT ("|")) )
+DL L L
+	BUTTON ( TEXT (";") SECOND (TEXT (":")) )
+	BUTTON ( TEXT ("\'") SECOND (TEXT ("\"")) )
+DL L L	
+	BUTTON ( TEXT (",") SECOND (TEXT ("<")) )
+	BUTTON ( TEXT (".") SECOND (TEXT (">")) )
+	BUTTON ( TEXT ("/") SECOND (TEXT ("?")) )
+	)
+
+INCLUDE ("qwertymeta.layout")

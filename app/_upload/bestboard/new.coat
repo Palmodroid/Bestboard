@@ -1,0 +1,11 @@
+COAT 1000
+
+INCLUDE ("auto.ext")
+INCLUDE ( "lit.ext")
+
+DEFAULT ( ADDLAYOUT ( COLUMNS 12 ROWS 6 ALIGN odds ASBOARD ))
+
+ADDLAYOUT ( ID litbase START )
+
+INCLUDE ("lit.layout")
+

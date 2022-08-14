@@ -1,0 +1,123 @@
+CENTER touch -> CENTER send
+WEST move     -> CENTER undo - WEST send
+CENTER move -> WEST undo -   CENTER send
+
+or:
+
+CENTER touch -> CENTER send
+WEST move     -> CENTER undo - WEST send
+WEST repeat move -> WEST send - repeat
+WEST move     -> stop repeat, but no undo
+CENTER move -> release undo -   CENTER send
+
+CENTER always UNDO
+WEST     never   UNDO (if repeat)
+
+
+
+
+How are MainButton's functions called?
+
+TOUCH_DOWN 	-> evaluateMain
+TOUCH_MOVE	-> evaluateMain OR evaluateSticky
+TOUCH_HOLD 	-> no call!
+TOUCH_UP 		-> evaluateMain
+
+evaluateMain:
+NEW BUTTON DETECTED: 
+	PREVIOUS: 	mainTouchEnd( isTouchUp )
+	
+	NEW: 		mainTouchStart( isTouchDown )
+
+IS LONG ?											NOT IN STICKY!
+	mainTouchSecondary(ButtonMainTouch.ON_CIRCLE);
+
+IS PRESSED ?										NOT IN STICKY!
+	mainTouchSecondary(ButtonMainTouch.ON_HARD_PRESS);
+          
+IS REPEATED ?										NOT IN STICKY! 
+	(repeatRunnable started by new MainTouchBow)
+	mainTouchSecondary( ButtonMainTouch.ON_STAY )
+
+evaluateSticky:
+
+
+
+
+
+
+
+
+@bo[onTouchEvent]
+
+@it[ACTION_DOWN] - this is the FIRST touch, all abandoned touch should be finished
+
+@it[ACTION_POINTER_DOWN]
+	- if (strokePointerId < 0) - NEW STROKE is started
+		- strokePoint is registered
+		- @bo[-> EVALUATE_MAIN] - either MAIN or META
+	- else - MAIN already started, other stroke cannot be started!
+	
+@it[ACTION_MOVE]
+	(Cannot work when screen is not ready screenWidthInPixels is -1 during this phase
+	 other actions doesn't appear during change))
+	
+	- Check each META
+	- Check MAIN - (even for historical events) - @bo[-> _touchEventsHoldAndMove]
+	
+		@bo[_touchEventsHoldAndMove] if MOVE
+		
+			|	---->> MOVE differs in the case of sticky button! 
+			|		(cannot go to other button and no long or hard press)
+			|		Bow already contains its origin
+
+			Adds new strokePoint
+			@bo[-> EVALUATE_MAIN]
+		
+@it[ACTION_UP/ACTION_POINTER_UP] - only one pointer is finished
+
+	- Check and clear MAIN - @bo[-> _touchEventUp()] @bo[-> EVALUATE_MAIN]
+	- Check META with pointerID
+	
+@it[ACTION_CANCEL] - all pointers are finished
+
+	- Check and clear MAIN - @bo[-> _touchEventUp()] @bo[-> EVALUATE_MAIN]
+	- Each META is cleared
+	
+	
+	
+@bo[evaluateMain] 
+bowAction: TOUCH_DOWN, TOUCH_HOLD, TOUCH_MOVE, TOUCH_UP and strokePoint
+	
+	- if NOT @it[TOUCH_UP]
+		adds @it[strokePoint] to path
+		
+	@it[newBowTouchCode = mainTouchBow.touchCode;] - eventually this is the actual touchCode
+	
+	
+|	if ( @bo[TOUCH_DOWN] )
+|	
+|	
+|	else if ( @bo[TOUCH_MOVE] )
+|
+|
+|	else if ( @bo[TOUCH_UP] )
+	
+
+	@it[if (mainTouchBow.touchCode != newBowTouchCode)]
+		- finish previous button - @it[if (mainTouchBow.buttonMainTouch != null)]
+	
+	        - if (newBowTouchCode != Layout.EMPTY_TOUCH_CODE)
+			newBowButton is created
+	        	- instanceof ButtonMainTouch
+	        		STICKY!!
+	        		mainTouchBow is created here with its button and origin
+	        		RETURN !!!
+	        	- instanceof ButtonMultiTouch
+	        	
+	        !!%ButtonMultitouch and outside areas end here!!!
+            	mainTouchBow is created without button!!;
+	
+	@it[else] - bow remained on the same button
+		- isLong() ?
+		- isPressed() ?

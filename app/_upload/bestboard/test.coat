@@ -1,0 +1,231 @@
+coat (1000)
+
+;		begin acute
+addmodify (id acute ignorespace rolls (
+"ā" "š" "ž" "AÁ" "CĆ" "" "" "åǻ" "EÉ" "j" "" "GǴ" "IÍ" "KḰ" "LĹ" "MḾ" "NŃ" "q" "x" "" "" "" "OÓ" "PṔ" "RŔ" "SŚ" "UÚ" "V" "WẂ" "YÝ" "ZŹ" "aá" "b" "cć" "eé" "gǵ" "ií" "kḱ" "lĺ" "mḿ" "nń" "oó" "pṕ" "rŕ" "sś" "ṣ" "t" "uú" "v" "wẃ" "yý" "zź" "~" "ÂẤ" "ÆǼ" "ÊẾ" "ÔỐ" "ÕṌ" "Ö" "ØǾ" "ÜǗ" "ß" "âấ" "ä" "æǽ" "êế" "ë" "î" "ôố" "õṍ" "ö" "ŏ" "" "" "øǿ" "üǘ" "ĂẮ" "ăắ" "ą" "č" "ĒḖ" "ēḗ" "ę" "ė" "ī" "ŋ" "ŌṒ" "ōṓ" "ţ" "ŨṸ" "ũṹ" "ƠỚ" "ơớ" "ƯỨ" "ưứ" "ǫ" "ǭ" "ǹ" "ɛ" "ɢ" "ɵ" "ʒ" "ʙ" "β" "δ" "χ" "ṛ" "ṠṤ" "ṡṥ" "ṭ" "ọ" "ḁ" "" "" "" "" "" "ḛ" "" "" "" "ḭ" "" "" "" "" "ǭ" "" "" "" "" "" "" "" "" "" "" "" "" "ã" "ẽ" "ĩ" "į" "ų" "à" "è" "ì" "ò" "ù" "û"
+))
+; end
+;		begin grave
+addmodify (id grave ignorespace rolls (
+"AÀ" "EÈ" "IÌ" "NǸ" "OÒ" "UÙ" "WẀ" "YỲ" "Z" "aà" "eè" "g" "iì" "j" "k" "l" "m" "nǹ" "oò" "p" "r" "s" "" "" "t" "uù" "wẁ" "yỳ" "z" "ÂẦ" "ÊỀ" "ÔỒ" "âầ" "ä" "å" "êề" "ë" "ôồ" "ö" "ü" "ĂẰ" "ăằ" "ĒḔ" "ēḕ" "ę" "ľ" "ń" "ŌṐ" "ōṑ" "ś" "ƠỜ" "ơờ" "ƯỪ" "ưừ" "ǫ" "ȧ" "ȯ" "ə" "ɛ" "ɯ" "β" "δ" "л" "ḱ" "ṕ" "ẹ" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "á" "é" "í" "ó" "ú" "û" "î" "ï"
+))
+; end
+;		begin trema
+addmodify (id trema ignorespace rolls (
+"aä" "eë" "g" "hḧ" "iï" "j" "n" "oö" "tẗ" "uü" "v" "wẅ" "xẍ" "yÿ" "AÄ" "EË" "HḦ" "IÏ" "OÖ" "UÜ" "WẄ" "XẌ" "YŸ" "ūǖṻ" "" "ī" "" "" "ô" "ÍḮ" "Ó" "ÕṎ" "ÙǛ" "ÚǗ" "à" "á" "è" "é" "ê" "íḯ" "ò" "ó" "" "õṏ" "ùǜ" "úǘ" "û" "ĀǞ" "āǟ" "ă" "ē" "ę" "ŌȪ" "ōȫ" "ŏ" "ŪǕṺ" "ŭ" "ǓǙ" "ǔǚ" "ẽ" "ọ" "ụ" "" "" "" "" "" "ḙ" "" "" "ḛ" "" "" "" "" "" "" "" "" "" "" "" "" ""
+))
+; end
+;		begin tilde
+addmodify (id tilde ignorespace rolls (
+"AÃ" "EẼ" "IĨ" "NÑ" "OÕ" "UŨ" "VṼ" "YỸ" "aã" "eẽ" "iĩ" "j" "lɫ" "m" "nñ" "oõ" "p" "uũ" "vṽ" "w" "yỹ" "ę" "ÊỄ" "ÓṌ" "ÚṸ" "âẫ" "êễ" "ë" "óṍ" "ôỗ" "úṹ" "ĂẴ" "ăẵ" "ŋ" "ŌȬ" "ōȭ" "ƠỠ" "ơỡ" "ƯỮ" "ưữ" "ˊ" "" "r" "b" "á" "é" "í"
+))
+; end
+;		begin hacek
+addmodify (id hacek ignorespace rolls (
+"ś" "ź" "AǍ" "CČ" "DĎ" "EĚ" "GǦ" "HȞ" "IǏ" "KǨ" "LĽ" "NŇ" "OǑ" "RŘ" "SŠ" "TŤ" "UǓ" "ZŽ" "aǎ" "cč" "dď" "eě" "gǧ" "hȟ" "iǐ" "jǰ" "kǩ" "lľ" "nň" "oǒ" "rř" "sš" "tť" "uǔ" "zž" "ć" "ē" "ƷǮ" "ə" "ʒǯ" "ṠṦ" "ṡṧ" "ṣ" "ẓ" "" "" "" "" "" "" "" "" "üǚ" "" "ζ" "κ" "λ" "ξ" "π" "σ" "τ" "Ζ" "Κ" "Λ" "Ξ" "Π" "Σ" "Τ"
+))
+; end
+;		begin circumflex
+addmodify (id circumflex ignorespace rolls (
+"aâ" "cĉ" "eê" "gĝ" "hĥ" "iî" "jĵ" "oô" "sŝ" "uû" "wŵ" "yŷ" "zẑ" "AÂ" "CĈ" "EÊ" "GĜ" "HĤ" "IÎ" "JĴ" "OÔ" "SŜ" "UÛ" "WŴ" "YŶ" "ZẐ" "ę" "" "ÀẦ" "ÁẤ" "ÃẪ" "ÈỀ" "ÉẾ" "ÒỒ" "ÓỐ" "ÕỖ" "ö" "àầ" "áấ" "ãẫ" "æ" "èề" "éế" "ë" "í" "òồ" "óố" "õỗ" "ü" "ą" "ȧ" "ə" "ɛ" "ẠẬ" "ạậ" "ẢẨ" "ảẩ" "ẸỆ" "ẹệ" "ẺỂ" "ē" "ẻể" "ẼỄ" "ẽễ" "ỌỘ" "ọộ" "ỎỔ" "ỏổ"
+))
+; end
+;		begin macron
+addmodify (id macron ignorespace rolls (
+"aā" "d" "eē" "gḡ" "iī" "j" "k" "l" "m" "n" "oō" "p" "r" "s" "uū" "w" "yȳ" "AĀ" "EĒ" "GḠ" "IĪ" "OŌ" "UŪ" "YȲ" "iī" "á" "èḕ" "üǖṻ" "ă" "" "" "ï" "ə" "ạ" "" "" "ẹ" "ÆǢ" "ÉḖ" "ÒṐ" "ÓṒ" "ÕȬ" "ÜǕ" "ä" "å" "æǣ" "éḗ" "ë" "ê" "í" "" "òṑ" "óṓ" "õȭ" "öȫ" "ė" "ę" "ě" "ĭ" "ŏ" "ţ" "ŭ" "ǫǭ" "ǻ" "ȧǡ" "ȮȰ" "ȯȱ" "ɛ" "ɜ" "ɯ" "χ" "ḶḸ" "ḷḹ" "ṚṜ" "ṛṝ" "ọ" "ụ" "ḁ" "" "" "" "" "ḙ" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "d" "" "" "ú" "à" "ì" "ò" "ù" "â" "î" "ô" "û"
+))
+; end
+;		begin ogonek
+addmodify (id ogonek ignorespace rolls (
+"aą" "cç" "dḑ" "eęȩ" "gģ" "hḩ" "iį" "kķ" "lļ" "nņ" "oǫ" "rŗ" "sş" "tţ" "uų" "AĄ" "CÇ" "DḐ" "EĘȨ" "GĢ" "HḨ" "IĮ" "KĶ" "LĻ" "NŅ" "OǪ" "RŖ" "SŞ" "TŢ" "UŲ" "kķ" "tţ" "ḗ" "ŏ" "" "" "ê" "ȏ" "á" "â" "è" "é" "ë" "ò" "ó" "ĆḈ" "ćḉ" "ē" "ĔḜ" "ĕḝ" "ŌǬ" "ōǭ" "š" "ȇ" "ȏ" "ə" "" "" "" "ẽ" "ṓ" "í" "ú"
+))
+; end
+;		begin dot
+addmodify (id dot ignorespace rolls (
+"AȦ" "BḂ" "CĊ" "DḊ" "EĖ" "FḞ" "GĠ" "HḢ" "Iİ" "" "LĿ" "MṀ" "NṄ" "OȮ" "PṖ" "RṘ" "SṠ" "TṪ" "WẆ" "XẊ" "YẎ" "ZŻ" "aȧ" "bḃ" "cċ" "dḋ" "eė" "fḟ" "gġ" "hḣ" "iı" "jȷ" "lŀ" "mṁ" "nṅ" "oȯ" "pṗ" "rṙ" "sṡ" "tṫ" "u" "v" "wẇ" "xẋ" "yẏ" "zż" "à" "â" "ò" "ù" "āǡ" "āǡ" "ă" "é" "ē" "ĕ" "ŌȰ" "ōȱ" "ŏ" "ŚṤ" "śṥ" "ŠṦ" "šṧ" "ū" "ſẛ" "ʒ" "ṢṨ" "ṣṩ" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""
+))
+; end
+;		begin dotbelow
+addmodify (id dotbelow ignorespace rolls (
+"aạ" "bḅ" "c" "dḍ" "eẹ" "hḥ" "iị" "kḳ" "lḷ" "mṃ" "nṇ" "oọ" "rṛ" "sṣ" "tṭ" "uụ" "vṿ" "wẉ" "yỵ" "zẓ" "AẠ" "BḄ" "DḌ" "EẸ" "HḤ" "IỊ" "KḲ" "LḶ" "MṂ" "NṆ" "OỌ" "RṚ" "SṢ" "TṬ" "UỤ" "VṾ" "WẈ" "YỴ" "ZẒ" "ā" "ē" "ś" "ÂẬ" "ÊỆ" "ÔỘ" "á" "âậ" "è" "é" "êệ" "î" "ó" "ôộ" "ö" "ü" "ĂẶ" "ăặ" "č" "ē" "ō" "ŕ" "ś" "š" "ū" "ž" "ƠỢ" "ơợ" "ƯỰ" "ưự" "ȇ" "ȏ" "ȧ" "ɒ" "ə" "δ" "ḺḸ" "ḻḹ" "ṞṜ" "ṟṝ" "ṠṨ" "ṡṩ" "" "" "" "" "ṓ"
+))
+; end
+;		begin eaccent
+addmodify (id eaccent ignorespace rolls (
+"O" "U" "V" "a" "e" "i" "j" "y" "o" "u" "v" "w" "ú"
+))
+; end
+;		begin horn
+addmodify (id horn ignorespace rolls (
+"OƠỎỞ" "oơỏở" "AẢ" "EẺ" "IỈ" "YỶ" "aả" "eẻ" "iỉ" "w" "yỷ" "ÂẨ" "ÊỂ" "ÓỚ" "ÔỔ" "ÕỠ" "ÚỨ" "âẩ" "êể" "óớ" "ôổ" "õỡ" "úứ" "ĂẲ" "ăẳ" "ŨỮ" "ũữ" "ỌỢ" "ọợ" "ỤỰ" "ụự" "UƯỦỬ" "uưủử"
+))
+; end
+;		begin stroke
+addmodify (id stroke ignorespace rolls (
+"oøɵ" "OØƟ" "ö" "0" "DÐ" "GǤ" "HĦ" "IƗ" "LŁ" "TŦ" "ZƵ" "bƀ" "dđ" "gǥ" "hħ" "lł" "tŧ" "zƶ" "ÓǾ" "ò" "óǿ" "ō" "" "iɨ" "ʃʄ" "uʉ"
+))
+; end
+;		begin ring
+addmodify (id ring ignorespace rolls (
+"AÅ" "UŮ" "aå" "e" "i" "uů" "wẘ" "W" "yẙ" "ÁǺ" "à" "áǻ" "ā" "ę" "ī" "ə" "" "" "" ""
+))
+; end
+;		begin ringbelow
+addmodify (id ringbelow ignorespace rolls (
+"AḀ" "aḁ" "e" "i" "l" "m" "u" "n" "r" "s" "v" "á" "ë" "ā" "ľ" "ł" "ȋ" "ɒ" "ə" "" ""
+))
+; end
+;		begin breve
+addmodify (id breve ignorespace rolls (
+"ā" "AĂ" "EĔ" "GĞ" "IĬ" "ǫ" "OŎ" "UŬ" "aă" "eĕ" "gğ" "iĭ" "j" "k" "l" "n" "oŏ" "p" "r" "s" "t" "uŭ" "w" "y" "ÀẰ" "ÁẮ" "ÃẴ" "àằ" "áắ" "ãẵ" "ä" "ö" "ü" "ė" "ī" "ľ" "ń" "ō" "ū" "ȧ" "ȯ" "ó" "ý" "ẃ" "ɛ" "ɯ" "β" "л" "ḿ" "ẠẶ" "ạặ" "ẢẲ" "ảẳ" "" "" "" "" "" "" "" "" "" "" ""
+))
+; end
+;		begin doublegrave
+addmodify (id doublegrave ignorespace rolls (
+"AȀ" "EȄ" "IȈ" "OȌŐ" "RȐ" "UȔŰ" "V" "aȁ" "eȅ" "g" "iȉ" "n" "" "" "oȍő" "rȑ" "uȕű" "v" "w" "y" "" ""
+))
+; end
+;		begin upside
+addmodify (id upside ignorespace rolls (
+"’‛‘" "2" "CƆ" "EƎƏ" "aɒɐ" "ē" "cɔ" "eə" "i" "mɯ" "ä" "å" "è" "é" "" "ê" "ö" "ü" "ė" "ę" "ě" "ȃ" "" "ȇ" "ȋ" "ȧ" "ɛɜ" "←→" "↑↓" "" "" "" "" "" "" "" "sƨ" "sƧ" "ʒƹ" "ƷƸ" "fɟ" "ɛɜ" "hɥ" "rɹ" "ʀʁ" "ʃʅ" "tʇ" "vʌ" "wʍ" "yʎ" "ʔʕʖ"
+))
+; end
+;		begin special
+addmodify (id special ignorespace rolls (
+"2½" "3ɜ" "8" "AÆ" "BƁ" "DƊ" "EƐ" "GƓ" "KƘ" "" "ȏ" "NŊ" "OŒ" "TÞƬ" "YƳ" "ZƷ" "aæɑ" "bɓʙ" "cɕʗ" "dð" "eɛ" "fſ" "gɣɠɢ" "hɦɧʜ" "kƙ" "lɬ" "nŋɲɴ" "oœ" "pƥ" "q" "sßʂʃʄʅʆ" "tþʈƭ" "vʋ" "x×" "yƴʏ" "zʒʐʑʓ" "|ǁǂʘ" "ÁǼ" "áǽ" "â" "" "è" "é" "ê" "ñ" "ò" "ó" "ö" "ĀǢ" "āǣ" "ď" "ē" "ĕ" "ń" "ō" "ŏ" "ź" "ż" "žǯ" "ǵ" "ḍ" "ḟẛ" "" "" "" "" "" "" "" "" "" "ḫ" "4¼¾" "iɪ" "ɯɰ" "mɱ" "ɹɺɻ" "rɾʀɿɼɽ" "uʊ" "?ʔ"
+))
+; end
+;		begin invbreve
+addmodify (id invbreve ignorespace rolls (
+"AȂ" "EȆ" "IȊ" "OȎ" "RȒ" "UȖ" "aȃ" "eȇ" "iȋ" "" "oȏ" "rȓ" "ǫ" "s" "uȗ" "ę" "ɒ" "ə" "ṣ" "ẹ" "" "" ""
+))
+; end
+;		begin down
+addmodify (id down ignorespace rolls (
+"a" "e" "h" "i" "o" "u" "è" "ë" "í" "ò" "ó" "ö" "ù" "ú" "ü" "ē" "ī" "ĭ" "ō" "ū" "ȯ" "ə" "" "ȱ" "ű" "å"
+))
+; end
+;		begin up
+addmodify (id up ignorespace rolls (
+"DḒ" "EḘ" "LḼ" "NṊ" "TṰ" "UṶ" "a" "dḓ" "eḙ" "" "ȫ" "ő" "lḽ" "nṋ" "o" "s" "tṱ" "uṷ" "á" "ä" "è" "é" "ë" "ò" "ó" "ö" "ā" "ă" "ē" "ō" "ŏ" "ū" "ŭ" "ȧ" "ȯ" "ə" "" "" "" "" "ȱ" "" "" ""
+))
+; end
+;		begin left
+addmodify (id left ignorespace rolls (
+"a" "e" "i" "k" "l" "s" "u" "z" "ä" "ḱ" "è" "é" "ì" "d" "ö" "ü" "ē" "ō" "ũ" "ǖ" "ȧ" "ɛ" "ɢ" "γ" "χ" "" "" "ŋ"
+))
+; end
+;		begin right
+addmodify (id right ignorespace rolls (
+"a" "e" "i" "n" "o" "s" "t" "u" "á" "é" "í" "ó" "ú" "à" "è" "ì" "ò" "ù" "â" "ê" "î" "ô" "û" "ä" "ë" "ï" "ö" "ü" "ā" "" "š" "ł" "ō" "ū" "ŭ" "ȧ" "ə" "ɛ" "ḱ" "" "" "" "" "" "" "" "" "" "" "" "" ""
+))
+; end
+;		begin smile
+addmodify (id smile ignorespace rolls (
+"HḪ" "a" "e" "hḫ" "i" "l" "o" "u" "é" "" "" "ä" "è" "ë" "ì" "ā" "ē" "ī" "ĭ" "ȧ" "ȯ" "ɛ" "ϑ" "л" "ẹ" "" "ǡ" "" "" "χ"
+))
+; end
+;		begin sad
+addmodify (id sad ignorespace rolls (
+"a" "e" "h" "i" "o" "u" "ì" "ö" "ü" "ë" "ő" "v" "é" "w" "ə" "ė" "ĭ" "ɛ" "ɯ" "ī" ""
+))
+; end
+;		begin misc
+addmodify (id misc ignorespace rolls (
+"BḆ" "DḎ" "EḚ" "IḬ" "KḴ" "LḺ" "NṈ" "RṞ" "TṮ" "UṴṲ" "ZẔ" "a" "bḇ" "dḏ" "eḛ" "hẖ" "iḭ" "kḵ" "lḻ" "nṉ" "o" "p" "" "rṟ" "s" "tṯ" "uṵṳ" "x" "zẕ" "á" "å" "é" "ë" "í" "ò" "ô" "ó" "ö" "ā" "ō" "ŏ" "ȧ" "ȫ" "ə" "δ" "ǡ" ""
+))
+; end
+;		begin diaindex
+addmodify (id diaindex ignorespace rolls (
+"f" "i" "ə" "(" "A" "E" "G" "a" "ë" "b" "c" "d" "e" "g" "h" "0⁰₀" "1¹₁" "2²₂" "3³₃" "4⁴₄" "5⁵₅" "6⁶₆" "7⁷₇" "8⁸₈" "9⁹₉" "β" "ə" "m" "n" "o" "r" "s" "t" "u" "x" "æ" "ó" "ö" "ü" "ă" "ő" "ś" "ť" "ȧ" "ɛ" "ɯ" "γ" "ṇ" "" "" "" "" ""
+))
+; end
+ADDMODIFY (ID charsacc IGNORESPACE 
+   ROLLS (
+   "aáAÁ"
+   "bßB"
+   "c¢©C"
+   "dD"
+   "eé€EÉ"
+   "f£F"
+   "gG" 
+   "hH"
+   "iíIÍ"
+   "jJ"
+   "kK" 
+   "lL"
+   "mµM"
+   "nN"
+   "oóöőOÓÖŐ"
+   "p§P¶"
+   "qQ"
+   "r®R"
+   "s$S"
+   "tT"
+   "uúüűUÚÜŰ"
+   "v¤V"
+   "wW"
+   "xX"
+   "y¥Y"
+   "zZ"
+   "({[<«"
+   ")}]>»"
+   "\"„”"
+   "\'’"
+   ".?!…"
+   ",;:"
+   "-–"
+   "/÷"
+   "+±†‡"
+   "%‰"
+   "*×"
+   "0°"
+   " ‑" ; non-breaking space and non breaking hyphen.
+   "#`~^") ) ; Special symbols, rarely needed
+
+addlayout (id basic columns 6 rows 3 asboard start )
+addlayout (id other columns 6 rows 2 asboard)
+
+block (layout basic row 2 column 2
+		button ( jump ( board other ) )
+sticky (
+			clock12 (mod (roll acute)) 
+			clock1 (mod (roll grave))
+			clock2 (mod (roll hacek))
+			clock3 (mod (roll circumflex)) 
+			clock4 (mod (roll tilde))
+			clock5 (mod (roll dot)) 
+			clock6 (mod (roll macron))
+			clock7 (mod (roll ring)) 
+			clock8 (mod (roll trema))
+			clock9 (mod (roll breve)) 
+			clock10 (mod (roll stroke))
+			clock11 (mod (roll ogonek)) 
+			color black
+			addtitle (text "ˊ" color 0nr yoffset -500)
+			addtitle (text "ˋ" color 0nrro xoffset 800 yoffset -300) 
+			addtitle (text "ˇ" color 0noor xoffset 1100 yoffset -100)
+			addtitle (text "ˆ" color 0nyyo xoffset 1200 yoffset 300)
+			addtitle (text "˜" color 0ny xoffset 1100 yoffset 700)
+ 			addtitle (text "˙" color 0nlys xoffset 900 yoffset 850)
+ 			addtitle (text "ˉ" color 0ng yoffset 1200)
+			addtitle (text "˚" color 0nltg xoffset -700 yoffset 1000)
+ 			addtitle (text " ̈" color 0nc xoffset -1000 yoffset 800)
+ 			addtitle (text "˘" color 0nlab xoffset -1200 yoffset 300)
+ 			addtitle (text "ˣ" color 0nb xoffset -1100 yoffset -200)
+ 			addtitle (text "˛" color 0nm xoffset -700 yoffset -1100)
+		)		
+		button ( text "a" )
+		button ( text "b" )
+		button ( text "c" )
+)
+
+block ( layout other row 1 column 2
+		button ( text "d" )
+		button ( text "e" )
+		button ( text "f" )
+		button ( jump ( board basic lock ) )
+)
+
+
+	
