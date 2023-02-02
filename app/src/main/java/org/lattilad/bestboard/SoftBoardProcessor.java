@@ -12,12 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.widget.Toast;
 
 import org.lattilad.bestboard.buttons.PacketTextSimple;
 import org.lattilad.bestboard.buttons.TitleDescriptor;
 import org.lattilad.bestboard.codetext.Entry;
 import org.lattilad.bestboard.debug.Debug;
 import org.lattilad.bestboard.prefs.PrefsFragment;
+import org.lattilad.bestboard.remotetyping.ConnectActivity;
 import org.lattilad.bestboard.scribe.Scribe;
 import org.lattilad.bestboard.server.Connection;
 import org.lattilad.bestboard.server.TextAfterCursor;
@@ -652,41 +654,63 @@ public class SoftBoardProcessor implements
         {
         Scribe.locus(Debug.TEXT);
 
-        // kijelölésnél mindenképpen a kijelölést törli először
-        if ( isSelected() )
-            {
-            selectCursor(ic, CURSOR_BEGIN);
-            // no undoString in selection
-            undoCounter ++;
-            // no change in calculatedCursor[0]
-            modifyCalculatedCursor(calculatedCursor[0]);
-            // no change in textBeforeCursor
-            textAfterCursor.invalidate();
-            ic.commitText("", 1);
+        Toast.makeText(getApplicationContext(), "senddelete called", Toast.LENGTH_SHORT).show();
 
-            Scribe.debug(Debug.TEXT, "Selected text was deleted.");
-            }
-        else if ( length != 0 )
+        Context context = getApplicationContext();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        boolean remote = prefs.getBoolean(softBoardService.getString(R.string.remote_toggle_key),
+                context.getResources().getBoolean(R.bool.remote_toggle_default));
+        boolean typeOnThis = prefs.getBoolean(softBoardService.getString(R.string.remote_type_on_this_key),
+                context.getResources().getBoolean(R.bool.remote_type_on_this_default));
+
+        if(!remote || !typeOnThis)
+        {
+            //copy code here
+            // kijelölésnél mindenképpen a kijelölést törli először
+            if ( isSelected() )
             {
-            undoString = null;
-            undoCounter ++;
-            if ( length < 0 )
-                {
-                modifyCalculatedCursor(calculatedCursor[0] + length);
-                textBeforeCursor.sendDelete( -length);
-                // ?? textAfterCursor.invalidate();
-                ic.deleteSurroundingText( -length, 0);
-                }
-            else // AFTER
-                {
-                // calculatedCursorStart does not change
+                selectCursor(ic, CURSOR_BEGIN);
+                // no undoString in selection
+                undoCounter ++;
+                // no change in calculatedCursor[0]
                 modifyCalculatedCursor(calculatedCursor[0]);
-                // textBeforeCursor
-                textAfterCursor.sendDelete(length);
-                ic.deleteSurroundingText( 0, length );
-                }
-            Scribe.debug(Debug.TEXT, "Text was deleted - " + length + " chars long.");
+                // no change in textBeforeCursor
+                textAfterCursor.invalidate();
+                ic.commitText("", 1);
+
+                Scribe.debug(Debug.TEXT, "Selected text was deleted.");
             }
+            else if ( length != 0 )
+            {
+                undoString = null;
+                undoCounter ++;
+                if ( length < 0 )
+                {
+                    modifyCalculatedCursor(calculatedCursor[0] + length);
+                    textBeforeCursor.sendDelete( -length);
+                    // ?? textAfterCursor.invalidate();
+                    ic.deleteSurroundingText( -length, 0);
+                }
+                else // AFTER
+                {
+                    // calculatedCursorStart does not change
+                    modifyCalculatedCursor(calculatedCursor[0]);
+                    // textBeforeCursor
+                    textAfterCursor.sendDelete(length);
+                    ic.deleteSurroundingText( 0, length );
+                }
+                Scribe.debug(Debug.TEXT, "Text was deleted - " + length + " chars long.");
+            }
+        }
+        else
+        {
+            if(ConnectActivity.communicationThread != null)
+            {
+                ConnectActivity.communicationThread.write(length);
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+            }
+        }
         }
 
     /*
@@ -1231,43 +1255,61 @@ public class SoftBoardProcessor implements
         {
         Scribe.locus(Debug.SERVICE);
 
-        InputConnection ic = softBoardService.getCurrentInputConnection();
-        if (ic != null)
+        Context context = getApplicationContext();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        boolean remote = prefs.getBoolean(softBoardService.getString(R.string.remote_toggle_key),
+            context.getResources().getBoolean(R.bool.remote_toggle_default));
+        boolean typeOnThis = prefs.getBoolean(softBoardService.getString(R.string.remote_type_on_this_key),
+            context.getResources().getBoolean(R.bool.remote_type_on_this_default));
+
+        if(!remote || !typeOnThis)
+        {
+            InputConnection ic = softBoardService.getCurrentInputConnection();
+            if (ic != null)
             {
-            ic.beginBatchEdit();
+                ic.beginBatchEdit();
 
-            if ( (autoSpace & PacketTextSimple.ERASE_SPACES_BEFORE) != 0 && softBoardData.autoFuncEnabled)
+                if ( (autoSpace & PacketTextSimple.ERASE_SPACES_BEFORE) != 0 && softBoardData.autoFuncEnabled)
                 {
-                sendDeleteSpacesBeforeCursor( ic );
+                    sendDeleteSpacesBeforeCursor( ic );
                 }
-            if ( (autoSpace & PacketTextSimple.ERASE_SPACES_AFTER) != 0 && softBoardData.autoFuncEnabled)
+                if ( (autoSpace & PacketTextSimple.ERASE_SPACES_AFTER) != 0 && softBoardData.autoFuncEnabled)
                 {
-                sendDeleteSpacesAfterCursor( ic );
-                }
-
-            sendBuilder.setLength(0);
-            if ( (autoSpace & PacketTextSimple.AUTO_SPACE_BEFORE) != 0 && softBoardData.autoFuncEnabled)
-                {
-                textBeforeCursor.reset(ic);
-                if ( !StringUtils.isWhiteSpace(textBeforeCursor.read()) )
-                    sendBuilder.append(' ');
+                    sendDeleteSpacesAfterCursor( ic );
                 }
 
-            sendBuilder.append(string);
-
-            if ( (autoSpace & PacketTextSimple.AUTO_SPACE_AFTER) != 0 && softBoardData.autoFuncEnabled)
+                sendBuilder.setLength(0);
+                if ( (autoSpace & PacketTextSimple.AUTO_SPACE_BEFORE) != 0 && softBoardData.autoFuncEnabled)
                 {
-                textAfterCursor.reset();
-                if ( !StringUtils.isSpace(textAfterCursor.read()) )
+                    textBeforeCursor.reset(ic);
+                    if ( !StringUtils.isWhiteSpace(textBeforeCursor.read()) )
+                        sendBuilder.append(' ');
+                }
+
+                sendBuilder.append(string);
+
+                if ( (autoSpace & PacketTextSimple.AUTO_SPACE_AFTER) != 0 && softBoardData.autoFuncEnabled)
+                {
+                    textAfterCursor.reset();
+                    if ( !StringUtils.isSpace(textAfterCursor.read()) )
                     {
-                    sendBuilder.append(' ');
+                        sendBuilder.append(' ');
                     }
                 }
 
-            sendString(ic, sendBuilder.toString());
+                sendString(ic, sendBuilder.toString());
 
-            ic.endBatchEdit();
+                ic.endBatchEdit();
             }
+        }
+        else
+        {
+            if(ConnectActivity.communicationThread != null)
+            {
+                ConnectActivity.communicationThread.write(string, autoSpace);
+            }
+        }
         }
 
 

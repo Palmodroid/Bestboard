@@ -102,6 +102,23 @@
     <string name="drawing_spedometer_limit_dialog_message">Enter length of the longest period to measure (in ms)! Events occurring after this period are not included in measurement.</string>
 
 
+    <string name="prefs_remote">Remote typing</string>
+
+    <string name="remote_toggle_key">remotetyping</string>
+    <string name="remote_toggle_title">Remote typing</string>
+    <string name="remote_toggle_on">If there is a connected device, you can type on one device, and create input on the other one</string>
+    <string name="remote_toggle_off">Remote typing is turned off</string>
+
+    <string name="remote_type_on_this_key">typeonthis</string>
+    <string name="remote_type_on_this_title">Type on this device</string>
+    <string name="remote_type_on_this_on">You will have a keyboard on this device, but the input will appear on the other one</string>
+    <string name="remote_type_on_this_off">You will have a keyboard on the other device, but the input will appear on this one</string>
+
+    <string name="remote_connect_key">connect</string>
+    <string name="remote_connect_title">Connect to device</string>
+    <string name="remote_connect_summary">There is no connected device. Click to select an available Bluetooth device</string>
+
+
     <string name="prefs_touch">Touch fine-tuning</string>
 
     <string name="touch_long_count_key">longcount</string>

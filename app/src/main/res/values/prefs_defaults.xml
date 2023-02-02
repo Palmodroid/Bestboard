@@ -27,6 +27,10 @@
     <integer name="drawing_spedometer_limit_min">0</integer>
     <integer name="drawing_spedometer_limit_max">60000</integer>
 
+    <bool name="remote_toggle_default">false</bool>
+
+    <bool name="remote_type_on_this_default">false</bool>
+
     <string name="touch_long_count_default">80</string>
     <integer name="touch_long_count_min">0</integer>
     <integer name="touch_long_count_max">1000</integer>

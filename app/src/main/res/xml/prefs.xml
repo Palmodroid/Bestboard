@@ -129,6 +129,26 @@
 	</PreferenceCategory>
 
 	<PreferenceCategory
+		android:title="@string/prefs_remote">
+
+		<CheckBoxPreference
+			android:key="@string/remote_toggle_key"
+			android:title="@string/remote_toggle_title"
+			android:defaultValue="@bool/remote_toggle_default"/>
+
+		<CheckBoxPreference
+			android:key="@string/remote_type_on_this_key"
+			android:title="@string/remote_type_on_this_title"
+			android:defaultValue="@bool/remote_type_on_this_default"/>
+
+		<Preference
+			android:key="@string/remote_connect_key"
+			android:title="@string/remote_connect_title"
+			android:summary="@string/remote_connect_summary"/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
 		android:title="@string/prefs_touch">
 
 		<EditTextPreference

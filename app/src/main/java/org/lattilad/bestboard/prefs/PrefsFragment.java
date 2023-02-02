@@ -19,6 +19,7 @@ import org.lattilad.bestboard.R;
 import org.lattilad.bestboard.debug.Debug;
 import org.lattilad.bestboard.fileselector.FileSelectorActivity;
 import org.lattilad.bestboard.parser.TokenizerTest;
+import org.lattilad.bestboard.remotetyping.ConnectActivity;
 import org.lattilad.bestboard.scribe.Scribe;
 import org.lattilad.bestboard.webview.WebViewActivity;
 
@@ -731,6 +732,34 @@ public class PrefsFragment extends PreferenceFragment
             if ( !allKeys )     performAction(PREFS_ACTION_RECALCULATE);
             }
 
+        // remote / toggle
+        if ( key.equals( getString( R.string.remote_toggle_key )) || allKeys )
+        {
+            // Cannot be null, if prefs.xml is valid
+            Preference preference = findPreference( getString( R.string.remote_toggle_key ) );
+            boolean value = sharedPrefs.getBoolean(getString(R.string.remote_toggle_key),
+                        getResources().getBoolean(R.bool.remote_toggle_default));
+            preference.setSummary( getString( value ?
+                    R.string.remote_toggle_on : R.string.remote_toggle_off ));
+
+            Scribe.note( Debug.PREF, "PREFERENCES: Remote toggle is set to: " + value );
+            if ( !allKeys )     performAction(PREFS_ACTION_RECALCULATE);
+        }
+
+        // remote / typeonthis
+        if ( key.equals( getString( R.string.remote_type_on_this_key )) || allKeys )
+        {
+            // Cannot be null, if prefs.xml is valid
+            Preference preference = findPreference( getString( R.string.remote_type_on_this_key ) );
+            boolean value = sharedPrefs.getBoolean(getString(R.string.remote_type_on_this_key),
+                getResources().getBoolean(R.bool.remote_type_on_this_default));
+            preference.setSummary( getString( value ?
+                R.string.remote_type_on_this_on : R.string.remote_type_on_this_off ));
+
+            Scribe.note( Debug.PREF, "PREFERENCES: Remote typeonthis is set to: " + value );
+            if ( !allKeys )     performAction(PREFS_ACTION_RECALCULATE);
+        }
+
         // Touch / Long count
         if ( key.equals( getString( R.string.touch_long_count_key )) || allKeys )
             {
@@ -1167,6 +1196,7 @@ public class PrefsFragment extends PreferenceFragment
 
     private static final int FILE_SELECTOR_REQUEST = 1;
     private static final int TEST_SELECTOR_REQUEST = 2;
+    private static final int REMOTE_CONNECT_REQUEST = 3;
 
 
     public void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -1228,6 +1258,10 @@ public class PrefsFragment extends PreferenceFragment
 
             performAction(PREFS_ACTION_TEST_LOAD);
             }
+
+        else if (requestCode == REMOTE_CONNECT_REQUEST && resultCode == Activity.RESULT_OK){
+            Scribe.note("Remote- connection established");
+        }
 
         else if (resultCode == Activity.RESULT_CANCELED) // Any request code
             {
@@ -1356,6 +1390,17 @@ public class PrefsFragment extends PreferenceFragment
                     return true;
                     }
                 });
+
+        findPreference(getString(R.string.remote_connect_key)).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ConnectActivity.class);
+
+                startActivityForResult(intent, REMOTE_CONNECT_REQUEST);
+                return true;
+            }
+        });
 
         // Preference as button - only click behavior is used
         findPreference(getString(R.string.debug_token_key)).

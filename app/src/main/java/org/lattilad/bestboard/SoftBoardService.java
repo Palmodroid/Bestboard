@@ -21,6 +21,7 @@ import org.lattilad.bestboard.parser.SoftBoardParser.SoftBoardParserListener;
 import org.lattilad.bestboard.permission.RequestPermissionDialog;
 import org.lattilad.bestboard.prefs.PrefsActivity;
 import org.lattilad.bestboard.prefs.PrefsFragment;
+import org.lattilad.bestboard.remotetyping.ConnectActivity;
 import org.lattilad.bestboard.scribe.Scribe;
 import org.lattilad.bestboard.webview.WebViewActivity;
 
@@ -512,6 +513,7 @@ public class SoftBoardService extends InputMethodService implements
 
         softBoardProcessor = new SoftBoardProcessor( this, softBoardData );
         softBoardProcessor.initInput();
+        ConnectActivity.setSoftBoardProcesssor(softBoardProcessor);
         }
 
 
